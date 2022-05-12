@@ -32,9 +32,7 @@ Widget botonBackHeader(BuildContext context, String pagina) {
           Icon(Icons.arrow_back_outlined, size: icon),
           Text(
             'ATRAS',
-            style: TextStyle(
-              fontSize: font,
-            ),
+            style: TextStyle(fontSize: font, color: Colors.red),
           )
         ],
       ),
