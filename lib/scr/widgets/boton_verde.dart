@@ -30,10 +30,11 @@ Widget botonBackHeader(BuildContext context, String pagina) {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(Icons.arrow_back_outlined, size: icon),
-          Text(
-            'ATRAS',
-            style: TextStyle(fontSize: font, color: Colors.red),
-          )
+          Text('ATRAS',
+              style: TextStyle(
+                fontSize: font,
+              ) //color: Colors.red),
+              )
         ],
       ),
       decoration: BoxDecoration(
