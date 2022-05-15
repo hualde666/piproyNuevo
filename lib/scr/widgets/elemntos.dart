@@ -45,10 +45,10 @@ Widget elementos(BuildContext context, Widget widget, double altura,
             ])
           : widget,
       decoration: BoxDecoration(
-          color: ruta == 'contactos' || tipo.contains('MPA')
+          color: // ruta == 'contactos' || tipo.contains('MPA')
               /** es un contacto o grupo de contacto */
-              ? Colors.green
-              : Theme.of(context).backgroundColor,
+              // ? Colors.green
+              Theme.of(context).backgroundColor,
           borderRadius: BorderRadius.circular(20.0),
           border: Border.all(color: Theme.of(context).primaryColor)),
     ),

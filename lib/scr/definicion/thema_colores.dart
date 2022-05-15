@@ -37,14 +37,13 @@ ThemeData themaApi(String color) {
     case '2':
       tema = ThemeData(
         primaryColor: Colors.black54,
-        backgroundColor:
-            Color.fromARGB(255, 26, 118, 51), //Color.fromRGBO(55, 57, 84, 1.0),
-        scaffoldBackgroundColor: Color.fromARGB(
-            255, 225, 217, 217), //Color.fromARGB(255, 251, 246, 240),
+        backgroundColor: Color.fromARGB(255, 143, 185, 168),
+        scaffoldBackgroundColor: Colors.white, //Color.fromARGB(
+        //  255, 225, 217, 217), //Color.fromARGB(255, 251, 246, 240),
         //Colors.grey[800], //  Color.fromRGBO(55, 57, 84, 1.0),
         textTheme: TextTheme(
             bodyText1: TextStyle(color: Colors.black),
-            bodyText2: TextStyle(color: Colors.white)),
+            bodyText2: TextStyle(color: Colors.black)),
         iconTheme: IconThemeData(color: Colors.white, size: 40),
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(

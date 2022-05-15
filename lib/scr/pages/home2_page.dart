@@ -109,8 +109,7 @@ class _Home2PageState extends State<Home2Page> {
       listaOpciones.add(elementos(
           context,
           Text('Contactos',
-              style: TextStyle(
-                  fontSize: 40.0, color: Theme.of(context).backgroundColor)),
+              style: TextStyle(fontSize: 40.0, color: Colors.white)),
           60,
           'contactos',
           ''));
