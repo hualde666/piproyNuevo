@@ -304,9 +304,12 @@ class IconOpcion extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.symmetric(vertical: 5),
-            child: Text(activo ? icontext : 'bloqueado',
+            child: Text(icontext,
                 style: TextStyle(
-                    color: Theme.of(context).primaryColor) //,Colors.white60),
+                  color: activo
+                      ? Theme.of(context).primaryColor
+                      : Theme.of(context).primaryColor.withOpacity(0.1),
+                ) //,Colors.white60),
                 ),
           ),
         ],
