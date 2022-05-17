@@ -85,6 +85,7 @@ flutter:
      - audio_emergencia.mpeg
      - assets/vitalfon.png
      - assets/google.png
+     - assets/google_opaco.png
      - assets/what.png
      - assets/icon_otro_blanco.png
      - assets/presentacion.mp4

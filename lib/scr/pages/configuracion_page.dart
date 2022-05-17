@@ -157,7 +157,7 @@ class ConfiguracionPage extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(
-              Icons.lock_outline,
+              pref.modoConfig ? Icons.lock_open : Icons.lock_outline,
               size: 40.0,
               color: Theme.of(context).primaryColor,
             ),

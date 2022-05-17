@@ -10,7 +10,9 @@ class OpcionesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final pref = Provider.of<Preferencias>(context);
 
-    double ancho = (MediaQuery.of(context).size.width);
+    double padding = (MediaQuery.of(context).size.width - 280) / 2 > 0
+        ? (MediaQuery.of(context).size.width - 320) / 2
+        : 0;
 
     List<Widget> opciones = [
       Divider(
@@ -21,12 +23,11 @@ class OpcionesPage extends StatelessWidget {
         height: 5,
       ),
       Container(
-        height: ancho,
+        height: 100,
+        padding: EdgeInsets.symmetric(horizontal: padding),
         margin: EdgeInsets.symmetric(horizontal: 5),
-        child: GridView.count(
-          mainAxisSpacing: 3,
-          crossAxisSpacing: 3,
-          crossAxisCount: 3,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
           physics: NeverScrollableScrollPhysics(),
           children: [
             GestureDetector(
@@ -38,36 +39,9 @@ class OpcionesPage extends StatelessWidget {
                   icontext: 'telefono',
                   activo: pref.iTelefono),
             ),
-            GestureDetector(
-                onTap: () {
-                  pref.iBateria = !pref.iBateria;
-                },
-                child: IconOpcion(
-                    iconop: Icons.battery_std,
-                    icontext: 'bateria',
-                    activo: pref.iBateria)),
-            GestureDetector(
-                onTap: () {
-                  pref.iWifi = !pref.iWifi;
-                },
-                child: IconOpcion(
-                    iconop: Icons.wifi, icontext: 'wifi', activo: pref.iWifi)),
-            GestureDetector(
-                onTap: () {
-                  pref.iLinea = !pref.iLinea;
-                },
-                child: IconOpcion(
-                    iconop: Icons.signal_cellular_alt_rounded,
-                    icontext: 'linea',
-                    activo: pref.iLinea)),
-            GestureDetector(
-                onTap: () {
-                  pref.iGps = !pref.iGps;
-                },
-                child: IconOpcion(
-                    iconop: Icons.gps_fixed_rounded,
-                    icontext: 'gps',
-                    activo: pref.iGps)),
+            SizedBox(
+              width: 10,
+            ),
             GestureDetector(
                 onTap: () {
                   pref.iLinterna = !pref.iLinterna;
@@ -76,6 +50,9 @@ class OpcionesPage extends StatelessWidget {
                     iconop: Icons.filter_alt,
                     icontext: 'linterna',
                     activo: pref.iLinterna)),
+            SizedBox(
+              width: 10,
+            ),
             GestureDetector(
                 onTap: () {
                   pref.iMensaje = !pref.iMensaje;
@@ -84,6 +61,9 @@ class OpcionesPage extends StatelessWidget {
                     iconop: Icons.chat,
                     icontext: 'mensaje',
                     activo: pref.iMensaje)),
+            SizedBox(
+              width: 10,
+            ),
             GestureDetector(
                 onTap: () {
                   pref.iReloj = !pref.iReloj;
@@ -105,14 +85,6 @@ class OpcionesPage extends StatelessWidget {
         },
         child: Container(
           height: 90,
-          decoration: BoxDecoration(
-            color: pref.iGoogle
-                ? Theme.of(context).scaffoldBackgroundColor
-                /** es un contacto o grupo de contacto */
-
-                : Colors.grey,
-            // borderRadius: BorderRadius.circular(20.0),
-          ),
           child: Container(
             height: 40,
             margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
@@ -121,7 +93,9 @@ class OpcionesPage extends StatelessWidget {
               height: 40,
               margin: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
               decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: pref.iGoogle
+                      ? Colors.white
+                      : Theme.of(context).backgroundColor.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(20.0),
                   border: Border.all(
                       color: Colors.white38, // Theme.of(context).primaryColor,
@@ -132,23 +106,40 @@ class OpcionesPage extends StatelessWidget {
                   SizedBox(
                     width: 20,
                   ),
-                  Container(
-                    child: Center(
-                        child: Image(
-                            image: AssetImage('assets/google.png'),
-                            fit: BoxFit.fill)),
-                    height: 40,
-                    width: 195,
-                    //color: Colors.red),
-                  ),
+                  pref.iGoogle
+                      ? Container(
+                          child: Center(
+                              child: Image(
+                                  image: AssetImage('assets/google.png'),
+                                  fit: BoxFit.fill)),
+                          height: 40,
+                          width: 195,
+                          //color: Colors.red),
+                        )
+                      : Container(
+                          child: Center(
+                              child: Image(
+                                  image: AssetImage('assets/google_opaco.png'),
+                                  fit: BoxFit.fill)),
+                          height: 40,
+                          width: 195,
+                          //color: Colors.red),
+                        ),
                   SizedBox(
                     width: 10,
                   ),
-                  Icon(
-                    Icons.search,
-                    color: Colors.blue,
-                    size: 30,
-                  ),
+                  pref.iGoogle
+                      ? Icon(
+                          Icons.search,
+                          color: Colors.blue,
+                          size: 30,
+                        )
+                      : Icon(
+                          Icons.search,
+                          color:
+                              Theme.of(context).primaryColor.withOpacity(0.1),
+                          size: 30,
+                        ),
                 ],
               ),
             ),
@@ -165,29 +156,36 @@ class OpcionesPage extends StatelessWidget {
         },
         child: Container(
           height: 90,
-          decoration: BoxDecoration(
-            color: pref.iContactos
-                ? Theme.of(context).scaffoldBackgroundColor
-                /** es un contacto o grupo de contacto */
+          // decoration: BoxDecoration(
+          //   color: pref.iContactos
+          //       ? Theme.of(context).scaffoldBackgroundColor
+          //       /** es un contacto o grupo de contacto */
 
-                : Colors.grey,
-          ),
+          //       : Colors.grey,
+          // ),
           child: Container(
             height: 40,
             margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
             decoration: BoxDecoration(
-                color:
-                    /** es un contacto o grupo de contacto */
-                    Colors.green,
+                color: pref.iContactos
+                    ? Theme.of(context).backgroundColor
+                    : Theme.of(context).backgroundColor.withOpacity(0.1),
+                // color:
+                //     /** es un contacto o grupo de contacto */
+                //     Colors.green,
                 borderRadius: BorderRadius.circular(20.0),
                 border: Border.all(
-                  color: Theme.of(context).primaryColor,
+                  color: pref.iContactos
+                      ? Theme.of(context).primaryColor
+                      : Theme.of(context).primaryColor.withOpacity(0.1),
                 )),
             child: Center(
               child: Text(
                 'Contactos',
                 style: TextStyle(
-                  color: Theme.of(context).backgroundColor,
+                  color: pref.iContactos
+                      ? Theme.of(context).primaryColor
+                      : Theme.of(context).primaryColor.withOpacity(0.1),
                   fontSize: 30,
                 ),
               ),
@@ -205,28 +203,33 @@ class OpcionesPage extends StatelessWidget {
         },
         child: Container(
             height: 90,
-            decoration: BoxDecoration(
-              color: pref.iAplicaciones
-                  ? Theme.of(context).scaffoldBackgroundColor
-                  /** es un contacto o grupo de contacto */
+            // decoration: BoxDecoration(
+            //   color: pref.iAplicaciones
+            //       ? Theme.of(context).scaffoldBackgroundColor
+            //       /** es un contacto o grupo de contacto */
 
-                  : Colors.grey,
-            ),
+            //       : Colors.grey,
+            // ),
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               decoration: BoxDecoration(
-                  color:
-                      /** es un contacto o grupo de contacto */
-                      Theme.of(context).backgroundColor,
+                  color: pref.iAplicaciones
+                      ? Theme.of(context).backgroundColor
+                      : Theme.of(context).backgroundColor.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(20.0),
                   border: Border.all(
-                    color: Theme.of(context).primaryColor,
+                    color: pref.iAplicaciones
+                        ? Theme.of(context).primaryColor
+                        : Theme.of(context).primaryColor.withOpacity(0.1),
                   )),
               child: Center(
                 child: Text(
                   'Aplicaciones',
                   style: TextStyle(
                     fontSize: 30,
+                    color: pref.iAplicaciones
+                        ? Theme.of(context).primaryColor
+                        : Theme.of(context).primaryColor.withOpacity(0.1),
                   ),
                 ),
               ),
@@ -267,14 +270,14 @@ class IconOpcion extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       //height: 70,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Theme.of(context).primaryColor, width: 2.0),
-        color: activo
-            ? Theme.of(context).scaffoldBackgroundColor
-            // Theme.of(context).primaryColor
-            : Colors.grey,
-      ),
+      // decoration: BoxDecoration(
+      //   //  borderRadius: BorderRadius.circular(20),
+      //   border: Border.all(color: Theme.of(context).primaryColor, width: 2.0),
+      //   color: activo
+      //       ? Theme.of(context).scaffoldBackgroundColor
+      //       // Theme.of(context).primaryColor
+      //       : Colors.grey,
+      // ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -282,22 +285,30 @@ class IconOpcion extends StatelessWidget {
             width: 70.0,
             height: 70.0,
             decoration: BoxDecoration(
-                color: Theme.of(context).backgroundColor,
+                color: activo
+                    ? Theme.of(context).backgroundColor
+                    : Theme.of(context).backgroundColor.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(80),
                 border: Border.all(
-                    color: Theme.of(context).primaryColor, width: 2.0)),
+                    color: activo
+                        ? Theme.of(context).primaryColor
+                        : Theme.of(context).primaryColor.withOpacity(0.2),
+                    width: 2.0)),
             child: Icon(
               iconop,
               size: 40.0,
+              color: activo
+                  ? Theme.of(context).primaryColor
+                  : Theme.of(context).primaryColor.withOpacity(0.1),
             ),
           ),
           Container(
             margin: EdgeInsets.symmetric(vertical: 5),
-            child: Text(icontext,
+            child: Text(activo ? icontext : 'bloqueado',
                 style: TextStyle(
                     color: Theme.of(context).primaryColor) //,Colors.white60),
                 ),
-          )
+          ),
         ],
       ),
     );
