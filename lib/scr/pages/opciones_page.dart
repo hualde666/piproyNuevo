@@ -83,68 +83,68 @@ class OpcionesPage extends StatelessWidget {
         onTap: () {
           pref.iGoogle = !pref.iGoogle;
         },
-        child: Container(
-          height: 90,
-          child: Container(
-            height: 40,
-            margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-            // alignment: Alignment.center,
+        child: Stack(children: [
+          Container(
+            height: 90,
             child: Container(
               height: 40,
-              margin: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
-              decoration: BoxDecoration(
-                  color: pref.iGoogle
-                      ? Colors.white
-                      : Theme.of(context).backgroundColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(20.0),
-                  border: Border.all(
-                      color: Colors.white38, // Theme.of(context).primaryColor,
-                      width: 0.5)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 20,
-                  ),
-                  pref.iGoogle
-                      ? Container(
-                          child: Center(
-                              child: Image(
-                                  image: AssetImage('assets/google.png'),
-                                  fit: BoxFit.fill)),
-                          height: 40,
-                          width: 195,
-                          //color: Colors.red),
-                        )
-                      : Container(
-                          child: Center(
-                              child: Image(
-                                  image: AssetImage('assets/google_opaco.png'),
-                                  fit: BoxFit.fill)),
-                          height: 40,
-                          width: 195,
-                          //color: Colors.red),
-                        ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  pref.iGoogle
-                      ? Icon(
-                          Icons.search,
-                          color: Colors.blue,
-                          size: 30,
-                        )
-                      : Icon(
-                          Icons.search,
-                          color:
-                              Theme.of(context).primaryColor.withOpacity(0.1),
-                          size: 30,
-                        ),
-                ],
+              margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+              // alignment: Alignment.center,
+              child: Container(
+                height: 40,
+                margin: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20.0),
+                    border: Border.all(
+                        color:
+                            Colors.white38, // Theme.of(context).primaryColor,
+                        width: 0.5)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Container(
+                      child: Center(
+                          child: Image(
+                              image: AssetImage('assets/google.png'),
+                              fit: BoxFit.fill)),
+                      height: 40,
+                      width: 195,
+                      //color: Colors.red),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Icon(
+                      Icons.search,
+                      color: Colors.blue,
+                      size: 30,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
+          pref.iGoogle
+              ? Container()
+              : Container(
+                  height: 60,
+                  margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                  // alignment: Alignment.center,
+                  child: Container(
+                      height: 40,
+                      margin: EdgeInsets.symmetric(horizontal: 2, vertical: 2),
+                      decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.7),
+                          borderRadius: BorderRadius.circular(20.0),
+                          border: Border.all(
+                              color: Colors
+                                  .white38, // Theme.of(context).primaryColor,
+                              width: 0.5)))),
+        ]),
       ),
       Divider(
         height: 2,
