@@ -22,7 +22,7 @@ class ResumenEnvioPage extends StatelessWidget {
           body: Container(
             height: 500,
             // color: Colors.white,
-            margin: EdgeInsets.symmetric(horizontal: 10, vertical: 50),
+            margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: ListView.builder(
               itemCount: listaE.length,
               itemBuilder: (context, i) {
@@ -57,15 +57,15 @@ class ResumenEnvioPage extends StatelessWidget {
 
 Widget headerResumen(BuildContext context) {
   return PreferredSize(
-    preferredSize: Size.fromHeight(200.0),
+    preferredSize: Size.fromHeight(145.0),
     // here the desired height
     child: Container(
       padding: EdgeInsets.only(top: 5),
-      height: 200,
+      height: 145,
       child: Column(
         children: [
           tresBotonesHeader(context, true, 'ResumenEnvio'),
-          Text('Resumen de Mensaje', style: TextStyle(fontSize: 30)),
+          Text('Resumen de Envío', style: TextStyle(fontSize: 25)),
         ],
       ),
     ),

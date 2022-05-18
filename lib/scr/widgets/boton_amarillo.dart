@@ -13,7 +13,7 @@ Widget botonHomeHeader(BuildContext context, String pagina) {
   double icon = 40;
   if (width <= 320) {
     ancho = 80;
-    alto = 65;
+    alto = 80;
     font = 15;
     icon = 40;
   }

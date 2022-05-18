@@ -25,7 +25,7 @@ class ContactsGruposPage extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       // backgroundColor: Theme.of(context).primaryColor,
       body: Container(
-        padding: EdgeInsets.only(bottom: 40),
+        padding: EdgeInsets.only(bottom: 50),
         child: ListView.builder(
             padding: EdgeInsets.only(bottom: 100),
             itemCount: listaGrupos.length,

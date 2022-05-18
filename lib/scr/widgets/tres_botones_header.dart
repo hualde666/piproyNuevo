@@ -16,7 +16,7 @@ Widget tresBotonesHeader(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         botonHomeHeader(context, pagina),
-        botonRojoHeader(context, rojo),
+        rojo ? botonRojoHeader(context, rojo) : Container(),
         botonBackHeader(context, pagina)
       ], // Ho
     ),

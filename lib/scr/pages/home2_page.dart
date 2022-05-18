@@ -291,40 +291,43 @@ class BotonesEncabezado extends StatelessWidget {
     // }
     return Container(
       child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              children: [
-                Container(
-                  width: width / 2,
-                  // color: Colors.red,
-                  // padding: EdgeInsets.only(top: 5),
-                  child: Center(child: ConfigWidget()),
-                ),
-                HoraFecha(),
-                FechaReloj(),
-              ],
+            Container(
+              child: Column(
+                children: [
+                  Container(
+                    width: width / 2,
+                    // color: Colors.red,
+                    // padding: EdgeInsets.only(top: 5),
+                    child: Center(child: ConfigWidget()),
+                  ),
+                  HoraFecha(),
+                  FechaReloj(),
+                ],
+              ),
             ),
-            Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.only(right: 5),
-                  //color: Colors.red,
-                  width: width / 2,
-                  height: 45,
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(Icons.wifi, color: Colors.grey),
-                        Icon(Icons.gps_fixed, color: Colors.grey),
-                        Icon(Icons.battery_alert, color: Colors.grey),
-                        Icon(Icons.signal_cellular_alt_rounded,
-                            color: Colors.grey),
-                      ]),
-                ),
-                botonRojoHeader(context, true),
-              ],
+            Container(
+              child: Column(
+                children: [
+                  Container(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(Icons.wifi, color: Colors.grey),
+                          Icon(Icons.gps_fixed, color: Colors.grey),
+                          Icon(Icons.battery_alert, color: Colors.grey),
+                          Icon(Icons.signal_cellular_alt_rounded,
+                              color: Colors.grey),
+                        ]),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  botonRojoHeader(context, true),
+                ],
+              ),
             )
 
             // Container(
@@ -509,6 +512,7 @@ class BotonAyuda extends StatelessWidget {
 
 Widget elementoApi2(BuildContext context, Application api) {
   final pref = Provider.of<Preferencias>(context, listen: false);
+  double size = MediaQuery.of(context).size.width;
   return GestureDetector(
     onTap: () {
       if (api.packageName != "") {
@@ -516,13 +520,7 @@ Widget elementoApi2(BuildContext context, Application api) {
       }
     },
     child: Container(
-      // height: 80,
-      // decoration: BoxDecoration(
-      //     color: Theme.of(context).scaffoldBackgroundColor,
-      //     borderRadius: BorderRadius.circular(20.0),
-      //     border:
-      //         Border.all(color: Theme.of(context).primaryColor, width: 0.5)),
-      // color: Colors.white12, //Theme.of(context).scaffoldBackgroundColor,
+      width: size / 2,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -530,7 +528,7 @@ Widget elementoApi2(BuildContext context, Application api) {
           Container(
             // height: 145,
             //width: 120,
-            //  color: Colors.red,
+
             child: Column(
               children: [
                 SizedBox(
@@ -548,7 +546,7 @@ Widget elementoApi2(BuildContext context, Application api) {
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: size <= 320 ? 15 : 20,
                   ),
                 ),
               ],
@@ -560,7 +558,7 @@ Widget elementoApi2(BuildContext context, Application api) {
               },
               child: pref.modoConfig
                   ? Container(
-                      width: 30,
+                      // width: 20,
                       height: 100,
                       child: Center(
                         child: Icon(

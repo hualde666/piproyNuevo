@@ -6,7 +6,7 @@ Widget headerApp(BuildContext context, String titulo, Widget otroWidget,
   double width = MediaQuery.of(context).size.width;
   double altoHeader = 170;
   if (width <= 320) {
-    altoHeader = 170;
+    altoHeader = 150;
   }
 
   return PreferredSize(
