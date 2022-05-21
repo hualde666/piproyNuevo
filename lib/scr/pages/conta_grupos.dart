@@ -143,7 +143,9 @@ class ContactsGruposPage extends StatelessWidget {
                         eliminarTipo(context, grupo);
                       }
                     },
-                    child: (grupo != 'Todos' && grupo != 'Emergencia')
+                    child: (grupo != 'Todos' &&
+                            grupo != 'Emergencia' &&
+                            pref.modoConfig)
                         ? Container(
                             width: 30,
                             height: 30,

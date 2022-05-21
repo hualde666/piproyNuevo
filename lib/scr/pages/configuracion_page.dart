@@ -59,7 +59,7 @@ class ConfiguracionPage extends StatelessWidget {
                     ? Theme.of(context).primaryColor
                     : Colors.white38,
               ),
-              title: Text('Agregar o eliminar contactos de emergencia',
+              title: Text('Contactos envío mensaje de emergencia',
                   style: TextStyle(
                     fontSize: 25,
                     color: pref.modoConfig
@@ -85,6 +85,26 @@ class ConfiguracionPage extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) => ContactsPorGrupoPage()));
               }),
+          Divider(
+            height: 10,
+            color: Theme.of(context).primaryColor,
+          ),
+          ListTile(
+              leading: Icon(
+                Icons.phone_forwarded,
+                size: 35.0,
+                color: pref.modoConfig
+                    ? Theme.of(context).primaryColor
+                    : Colors.white38,
+              ),
+              title: Text('Contacto llamada de emergencia',
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: pref.modoConfig
+                        ? Theme.of(context).primaryColor
+                        : Colors.white38,
+                  )),
+              onTap: () {}),
           Divider(
             height: 10,
             color: Theme.of(context).primaryColor,

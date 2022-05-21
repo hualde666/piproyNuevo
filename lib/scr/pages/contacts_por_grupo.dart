@@ -74,9 +74,10 @@ class _ContactsPorGrupoPageState extends State<ContactsPorGrupoPage> {
           return List.generate(
               lista.length,
               (i) => (grupo != 'Todos')
-                  ? TarjetaContacto2(
-                      context, lista[i], true, true && pref.modoConfig)
-                  : TarjetaContacto2(context, lista[i], true, false));
+                  ? TarjetaContacto2(context, lista[i], true && pref.modoConfig,
+                      true && pref.modoConfig)
+                  : TarjetaContacto2(
+                      context, lista[i], true && pref.modoConfig, false));
         }
       }
       return [];
