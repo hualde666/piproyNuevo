@@ -63,7 +63,7 @@ class _ContactsPorGrupoPageState extends State<ContactsPorGrupoPage> {
         return List.generate(
             listaContactosFiltro.length,
             (i) => TarjetaContacto2(
-                context, listaContactosFiltro[i], true, false));
+                context, listaContactosFiltro[i], true, false, 'MPA3 Todas'));
       } else {
         List<ContactoDatos> lista =
             await apiProvider.obtenerListaContactosGrupo(context, grupo);
@@ -75,9 +75,9 @@ class _ContactsPorGrupoPageState extends State<ContactsPorGrupoPage> {
               lista.length,
               (i) => (grupo != 'Todos')
                   ? TarjetaContacto2(context, lista[i], true && pref.modoConfig,
-                      true && pref.modoConfig)
-                  : TarjetaContacto2(
-                      context, lista[i], true && pref.modoConfig, false));
+                      true && pref.modoConfig, 'MPA3 Todas')
+                  : TarjetaContacto2(context, lista[i], true && pref.modoConfig,
+                      false, 'MPA3 Todas'));
         }
       }
       return [];

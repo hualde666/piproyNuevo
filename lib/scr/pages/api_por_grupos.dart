@@ -247,12 +247,12 @@ class ElementoApi extends StatelessWidget {
       actions: [
         ElevatedButton(
             onPressed: () {
-              final nuevo = new ApiTipos(grupo: 'MPB', nombre: api.packageName);
-              if (!apiProvider.listaMenu.contains('MPB' + api.packageName)) {
+              final nuevo = new ApiTipos(grupo: 'MPD', nombre: api.packageName);
+              if (!apiProvider.listaMenu.contains('MPD' + api.packageName)) {
                 /// actualizar lista MENU
                 ///
                 Provider.of<AplicacionesProvider>(context, listen: false)
-                    .agregarMenu('MPB' + api.packageName);
+                    .agregarMenu('MPD' + api.packageName);
 
                 DbTiposAplicaciones.db.nuevoTipo(nuevo);
               }

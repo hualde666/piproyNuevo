@@ -13,7 +13,7 @@ Widget elementos(BuildContext context, Widget widget, double altura,
   final pref = Provider.of<Preferencias>(context, listen: false);
   return GestureDetector(
     child: Container(
-      height: altura,
+      height: 92, //altura,
       margin: EdgeInsets.symmetric(horizontal: 5),
       alignment: Alignment.center,
       child: eliminable
@@ -56,12 +56,14 @@ Widget elementos(BuildContext context, Widget widget, double altura,
       if (ruta != '') {
         Provider.of<AplicacionesProvider>(context, listen: false)
             .tipoSeleccion = ruta;
-        if (tipo.contains('MPD')) {
+        if (tipo.contains('MPF')) {
+          //**** grupo de apps */
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => ApiPorGrupoPage()));
           // Navigator.pushNamed(context, 'grupo');
         } else {
-          if (tipo.contains('MPC')) {
+          if (tipo.contains('MPE')) {
+            //**** grupo de contacto */
             Navigator.push(
                 context,
                 MaterialPageRoute(

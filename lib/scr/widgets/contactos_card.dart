@@ -8,15 +8,19 @@ import 'package:piproy/scr/providers/db_provider.dart';
 import 'package:piproy/scr/widgets/icon_conteiner.dart';
 import 'package:provider/provider.dart';
 
+import '../funciones/url_funciones.dart';
+import '../providers/estado_celular.dart';
 import '../providers/usuario_pref.dart';
 
 class TarjetaContacto2 extends StatefulWidget {
-  TarjetaContacto2(this.context, this.contacto, this.envio, this.eliminar);
+  TarjetaContacto2(
+      this.context, this.contacto, this.envio, this.eliminar, this.tipo);
   final BuildContext context;
   final ContactoDatos contacto;
   //**** boleana envio true el contacto tiene la opcion de enviar al menu principal */
   final bool envio;
   final bool eliminar;
+  final String tipo;
 
   @override
   _TarjetaContacto2 createState() => _TarjetaContacto2();
@@ -34,25 +38,24 @@ class _TarjetaContacto2 extends State<TarjetaContacto2> {
   @override
   Widget build(BuildContext context) {
     final apiProvider = Provider.of<AplicacionesProvider>(context);
-
+    final contactosProvaider = Provider.of<ContactosProvider>(context);
     final grupo = apiProvider.tipoSeleccion;
+    final celProvider = Provider.of<EstadoProvider>(context, listen: false);
 
-    return oneTap
+    bool activoDatos = celProvider.conexionDatos;
+    return widget.tipo != 'MPA' && widget.tipo != 'MPB'
         ? GestureDetector(
             child: Container(
-              height: 225,
+              height: oneTap ? 225 : 92,
               margin: EdgeInsets.symmetric(horizontal: 2, vertical: 2.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  //_avatar(contacto),
-                  // SizedBox(
-                  //   height: 5,
-                  // ),
                   _nombreContacto(context, widget.contacto, grupo,
-                      (widget.envio), widget.eliminar),
-
-                  _botonesContactos(context, widget.contacto),
+                      (widget.envio), widget.eliminar, widget.tipo),
+                  oneTap
+                      ? _botonesContactos(context, widget.contacto)
+                      : Container(),
                 ],
               ),
               decoration: BoxDecoration(
@@ -62,37 +65,47 @@ class _TarjetaContacto2 extends State<TarjetaContacto2> {
                       color: Theme.of(context).primaryColor, width: 1.0)),
             ),
             onTap: () {
-              oneTap = !oneTap;
-              setState(() {});
+              if (widget.tipo != 'MPA' && widget.tipo != 'MPB') {
+                oneTap = !oneTap;
+                setState(() {});
+              }
+
               // Navigator.pushNamed(context, 'editarContacto', arguments: contacto);
             },
           )
         : GestureDetector(
             child: Container(
-              height: 60,
+              height: 92,
               margin: EdgeInsets.symmetric(horizontal: 5, vertical: 2.0),
               child:
                   //_avatar(contacto),
                   _nombreContacto(context, widget.contacto, grupo, widget.envio,
-                      widget.eliminar),
+                      widget.eliminar, widget.tipo),
             ),
-            onTap: () {
-              oneTap = !oneTap;
-              setState(() {});
+            onTap: () async {
+              if (widget.tipo == 'MPA') {
+                if (activoDatos) {
+                  final ContactoDatos _contacto = await contactosProvaider
+                      .obtenerContacto(widget.contacto.nombre);
+
+                  /// *** llamada desde el contacto
+                  llamar(_contacto.telefono);
+                }
+                /* llamar por telefono*/
+              } else if (widget.tipo == 'MPB') {
+                // ** ir a contacto Whastappp
+                final ContactoDatos _contacto = await contactosProvaider
+                    .obtenerContacto(widget.contacto.nombre);
+                if (_contacto.telefono != "") {
+                  abrirWhatsapp(_contacto.telefono, '');
+                }
+              }
+              // oneTap = !oneTap;
+              // setState(() {});
               // Navigator.pushNamed(context, 'editarContacto', arguments: contacto);
             },
           );
   }
-}
-
-_eliminarContacto(ContactoDatos contacto) async {
-  // final resp = await Permission.contacts.request();
-
-  // if (resp == PermissionStatus.granted) {
-  //   await ContactsService.deleteContact(contacto);
-  // }
-
-  return;
 }
 
 Widget _botonesContactos(BuildContext context, ContactoDatos contacto) {
@@ -217,7 +230,7 @@ Widget _botonesContactos(BuildContext context, ContactoDatos contacto) {
 }
 
 Widget _nombreContacto(BuildContext context, ContactoDatos contacto,
-    String grupo, bool envio, bool eliminar) {
+    String grupo, bool envio, bool eliminar, String tipo) {
   final pref = Provider.of<Preferencias>(context);
   Future<dynamic> eliminarContactoGrupo(
           BuildContext context, String grupo, ContactoDatos contacto) =>
@@ -229,13 +242,11 @@ Widget _nombreContacto(BuildContext context, ContactoDatos contacto,
               style: TextStyle(
                 fontSize: 25,
               )),
-          content: grupo == 'Todos'
-              ? Text('¿Desea eliminar este contacto  del CELULAR ?')
-              : Text('¿Desea eliminar este contacto del grupo $grupo ?',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 25,
-                  )),
+          content: Text('¿Desea eliminar este contacto del grupo $grupo ?',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 25,
+              )),
           //                 style: TextStyle(
           //                   fontSize: 25,
           //                 )),
@@ -250,13 +261,6 @@ Widget _nombreContacto(BuildContext context, ContactoDatos contacto,
                   /// elina contacto de pantalla
                   Provider.of<AplicacionesProvider>(context, listen: false)
                       .eliminarContacto(grupo, contacto);
-
-                  // elimino contacto del celular
-                  if (grupo == 'Todos') {
-                    _eliminarContacto(contacto);
-                    final contactosProvider = new ContactosProvider();
-                    contactosProvider.borrarDeListaContacto(contacto);
-                  } else {}
 
                   Navigator.pop(context);
                 },
@@ -276,52 +280,96 @@ Widget _nombreContacto(BuildContext context, ContactoDatos contacto,
   Future<dynamic> agregarMPA(
       BuildContext context, ContactoDatos contacto) async {
     return await showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              title: Text(contacto.nombre,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 30,
-                  )),
-              content: Text('¿Desea agregar este contacto al menu principal ?',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 25,
-                  )),
-              //                 style: TextStyle(
-              //                   fontSize: 25,
-              //                 )),
-              // shape: CircleBorder(),
-              elevation: 14.0,
-              actionsPadding: EdgeInsets.symmetric(horizontal: 30.0),
-              actionsAlignment: MainAxisAlignment.spaceAround,
-              actions: [
-                ElevatedButton(
-                    onPressed: () {
-                      final nuevo =
-                          new ApiTipos(grupo: 'MPA', nombre: contacto.nombre);
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(contacto.nombre,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 30,
+            )),
+        content: Text('¿Agregar este contacto al menu principal cómo ?',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 25,
+            )),
+        elevation: 14.0,
+        actionsPadding: EdgeInsets.symmetric(horizontal: 30.0),
+        actionsAlignment: MainAxisAlignment.spaceAround,
+        actionsOverflowDirection: VerticalDirection.down,
+        actions: [
+          ElevatedButton(
+              onPressed: () {
+                grupo = 'MPA';
+                final nuevo =
+                    new ApiTipos(grupo: grupo, nombre: contacto.nombre);
+                Provider.of<AplicacionesProvider>(context, listen: false)
+                    .agregarMenu(grupo + contacto.nombre);
 
-                      /// actualizar lista MENU
-                      ///
-                      Provider.of<AplicacionesProvider>(context, listen: false)
-                          .agregarMenu('MPA' + contacto.nombre);
+                DbTiposAplicaciones.db.nuevoTipo(nuevo);
+                Navigator.pop(context);
+              },
+              child: Container(
+                width: 300,
+                child: Center(
+                  child: Text(
+                    'Discado Rapido',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              )),
+          ElevatedButton(
+              onPressed: () {
+                grupo = 'MPB';
+                final nuevo =
+                    new ApiTipos(grupo: grupo, nombre: contacto.nombre);
+                Provider.of<AplicacionesProvider>(context, listen: false)
+                    .agregarMenu(grupo + contacto.nombre);
 
-                      DbTiposAplicaciones.db.nuevoTipo(nuevo);
+                DbTiposAplicaciones.db.nuevoTipo(nuevo);
+                Navigator.pop(context);
+              },
+              child: Container(
+                width: 300,
+                child: Center(
+                  child: Text(
+                    'WhatsApp',
+                  ),
+                ),
+              )),
+          ElevatedButton(
+              onPressed: () {
+                grupo = 'MPC';
+                final nuevo =
+                    new ApiTipos(grupo: grupo, nombre: contacto.nombre);
+                Provider.of<AplicacionesProvider>(context, listen: false)
+                    .agregarMenu(grupo + contacto.nombre);
 
-                      Navigator.of(context).pop();
-                    },
-                    child: Text(
-                      'Si',
-                    )),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text(
-                      'NO',
-                    )),
-              ],
-            ));
+                DbTiposAplicaciones.db.nuevoTipo(nuevo);
+                Navigator.pop(context);
+              },
+              child: Container(
+                width: 300,
+                child: Center(
+                  child: Text(
+                    'Todos',
+                  ),
+                ),
+              )),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Container(
+                width: 300,
+                child: Center(
+                  child: Text(
+                    'Cancelar',
+                  ),
+                ),
+              )),
+        ],
+      ),
+    );
   }
 
   Future<dynamic> eliminarContactoMP(BuildContext context, String tipo) {
@@ -370,10 +418,7 @@ Widget _nombreContacto(BuildContext context, ContactoDatos contacto,
           borderRadius: BorderRadius.circular(15.0),
           border: Border.all(color: Theme.of(context).primaryColor)),
       width: double.infinity,
-      child:
-          // _avatar(context, contacto),
-
-          Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           envio && pref.modoConfig
@@ -415,7 +460,7 @@ Widget _nombreContacto(BuildContext context, ContactoDatos contacto,
 
                 } else {
                   // eliminar contacto menu principal
-                  eliminarContactoMP(context, 'MPA' + contacto.nombre);
+                  eliminarContactoMP(context, tipo + contacto.nombre);
                 }
               },
               child: eliminar && pref.modoConfig

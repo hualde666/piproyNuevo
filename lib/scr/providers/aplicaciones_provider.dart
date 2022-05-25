@@ -367,6 +367,7 @@ class AplicacionesProvider with ChangeNotifier {
       if (resp.isNotEmpty) {
         final resp2 = resp.map((s) => ApiTipos.fromJson(s)).toList();
         this._cargando = false;
+
         ordenarListasMenu(resp2);
       }
     }
@@ -378,26 +379,38 @@ class AplicacionesProvider with ChangeNotifier {
       switch (resp2[i].grupo) {
         case 'MPA':
           {
-            //contacto
+            //contacto disado rapido
             listaMenu.add('MPA' + resp2[i].nombre);
             break;
           }
         case 'MPB':
           {
-            // app
+            //contacto directo a whatsapp
             listaMenu.add('MPB' + resp2[i].nombre);
             break;
           }
         case 'MPC':
           {
-            //grupo contacto
+            //contacto con opcion a llamada y whatsapp
             listaMenu.add('MPC' + resp2[i].nombre);
             break;
           }
         case 'MPD':
           {
-            // grupo app
+            // app
             listaMenu.add('MPD' + resp2[i].nombre);
+            break;
+          }
+        case 'MPE':
+          {
+            //grupo contacto
+            listaMenu.add('MPE' + resp2[i].nombre);
+            break;
+          }
+        case 'MPF':
+          {
+            // grupo app
+            listaMenu.add('MPF' + resp2[i].nombre);
             break;
           }
 
@@ -448,16 +461,6 @@ class AplicacionesProvider with ChangeNotifier {
           }
         }
       }
-
-      // ordenar  alfabeticamente Todas las api por categoria
-      //
-      // for (var i = 0; i < _apigrupos.length; i++) {
-      //   if (categoryApi[_apigrupos[i]].isNotEmpty) {
-      //     categoryApi[_apigrupos[i]].sort((a, b) {
-      //       return a.appName.toLowerCase().compareTo(b.appName.toLowerCase());
-      //     });
-      //   }
-      // }
     }
   }
 }

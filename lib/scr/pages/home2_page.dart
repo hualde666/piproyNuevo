@@ -101,6 +101,8 @@ class _Home2PageState extends State<Home2Page> {
       );
     }
     if (listaMenu.isNotEmpty) {
+      listaOpciones.addAll(await listaContactosLlamadas(context, listaMenu));
+      listaOpciones.addAll(await listaContactosWhatsapp(context, listaMenu));
       listaOpciones.addAll(await listaContactos(context, listaMenu));
       listaOpciones.add(await matrizApis(context, listaMenu));
       listaOpciones.addAll(listaGrupos(context, listaMenu));
@@ -194,17 +196,20 @@ Iterable<Widget> listaGrupos(BuildContext context, List<String> listaMenu) {
   final List<String> lista = [];
   final List<Widget> listaGrupos = [];
   //********************************************************** */
-  //************** grupos de contactoa************************* */
-  lista.addAll(listaMenu.where((element) => element.contains('MPC')));
+  //************** grupos de contactos************************* */
+  lista.addAll(listaMenu.where((element) => element.contains('MPE')));
   for (var i = 0; i < lista.length; i++) {
     final String titulo = lista[i].substring(3);
     listaGrupos.add(elementos(context,
         Text(titulo, style: TextStyle(fontSize: 40.0)), 60, titulo, lista[i]));
     listaGrupos.add(SizedBox(height: 8));
   }
+
+  //********************************************************** */
+  //************** grupos de APPS************************* */
   final List<String> lista2 = [];
 
-  lista2.addAll(listaMenu.where((element) => element.contains('MPD')));
+  lista2.addAll(listaMenu.where((element) => element.contains('MPF')));
   for (var i = 0; i < lista2.length; i++) {
     final String titulo = lista2[i].substring(3);
     listaGrupos.add(elementos(context,
@@ -221,7 +226,7 @@ matrizApis(BuildContext context, List<String> listaMenu) async {
   //final listaMenu = apiProvider.listaMenu;
   final List<String> lista = [];
   final List<Widget> listaApis = [];
-  lista.addAll(listaMenu.where((element) => element.contains('MPB')));
+  lista.addAll(listaMenu.where((element) => element.contains('MPD')));
   for (var i = 0; i < lista.length; i++) {
     final Application api =
         await DeviceApps.getApp(lista[i].substring(3), true);
@@ -250,7 +255,7 @@ matrizApis(BuildContext context, List<String> listaMenu) async {
   }
 }
 
-listaContactos(BuildContext context, List<String> listaMenu) async {
+listaContactosLlamadas(BuildContext context, List<String> listaMenu) async {
   //*********************************************************** */
   /****************** un contacto MPA***************************/
   //*********************************************************** */
@@ -265,7 +270,53 @@ listaContactos(BuildContext context, List<String> listaMenu) async {
         await contactosProvider.obtenerContacto(nombre);
     if (contacto != null) {
       listaWidgetContactos
-          .add(TarjetaContacto2(context, contacto, false, true));
+          .add(TarjetaContacto2(context, contacto, false, true, 'MPA'));
+      listaWidgetContactos.add(SizedBox(height: 8));
+    }
+  }
+
+  return listaWidgetContactos;
+}
+
+listaContactos(BuildContext context, List<String> listaMenu) async {
+  //*********************************************************** */
+  /****************** un contacto MPC LLAMADAS  Y WHATSAPP*******/
+  //*********************************************************** */
+  final contactosProvider =
+      Provider.of<ContactosProvider>(context, listen: false);
+  final List<Widget> listaWidgetContactos = [];
+  final List<String> lista = [];
+  lista.addAll(listaMenu.where((element) => element.contains('MPC')));
+  for (var i = 0; i < lista.length; i++) {
+    String nombre = lista[i].substring(3);
+    final ContactoDatos contacto =
+        await contactosProvider.obtenerContacto(nombre);
+    if (contacto != null) {
+      listaWidgetContactos
+          .add(TarjetaContacto2(context, contacto, false, true, 'MPC'));
+      listaWidgetContactos.add(SizedBox(height: 8));
+    }
+  }
+
+  return listaWidgetContactos;
+}
+
+listaContactosWhatsapp(BuildContext context, List<String> listaMenu) async {
+  //*********************************************************** */
+  /****************** un contacto MPA***************************/
+  //*********************************************************** */
+  final contactosProvider =
+      Provider.of<ContactosProvider>(context, listen: false);
+  final List<Widget> listaWidgetContactos = [];
+  final List<String> lista = [];
+  lista.addAll(listaMenu.where((element) => element.contains('MPB')));
+  for (var i = 0; i < lista.length; i++) {
+    String nombre = lista[i].substring(3);
+    final ContactoDatos contacto =
+        await contactosProvider.obtenerContacto(nombre);
+    if (contacto != null) {
+      listaWidgetContactos
+          .add(TarjetaContacto2(context, contacto, false, true, 'MPB'));
       listaWidgetContactos.add(SizedBox(height: 8));
     }
   }
@@ -554,7 +605,7 @@ Widget elementoApi2(BuildContext context, Application api) {
           ),
           GestureDetector(
               onTap: () {
-                eliminarApiMP(context, 'MPB' + api.packageName, api.appName);
+                eliminarApiMP(context, 'MPD' + api.packageName, api.appName);
               },
               child: pref.modoConfig
                   ? Container(

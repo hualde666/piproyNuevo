@@ -372,12 +372,12 @@ class ContactsGruposPage extends StatelessWidget {
         ElevatedButton(
             onPressed: () {
               final nuevo =
-                  new ApiTipos(grupo: 'MPC', nombre: grupo, tipo: "3");
-              if (!apiProvider.listaMenu.contains('MPC' + grupo)) {
+                  new ApiTipos(grupo: 'MPE', nombre: grupo, tipo: "3");
+              if (!apiProvider.listaMenu.contains('MPE' + grupo)) {
                 /// actualizar lista MENU
                 ///
                 Provider.of<AplicacionesProvider>(context, listen: false)
-                    .agregarMenu('MPC' + grupo);
+                    .agregarMenu('MPE' + grupo);
 
                 DbTiposAplicaciones.db.nuevoTipo(nuevo);
               }
@@ -481,14 +481,14 @@ class ContactsGruposPage extends StatelessWidget {
                     // agregar a BD
 
                     apiProvider.cambiarGrupoContact(grupo, grupoNuevo);
-                    if (apiProvider.listaMenu.contains('MPC' + grupo)) {
+                    if (apiProvider.listaMenu.contains('MPE' + grupo)) {
                       Provider.of<AplicacionesProvider>(context, listen: false)
-                          .agregarMenu('MPC' + grupoNuevo);
+                          .agregarMenu('MPE' + grupoNuevo);
                       Provider.of<AplicacionesProvider>(context, listen: false)
-                          .eliminarTipoMP('MPC' + grupo);
+                          .eliminarTipoMP('MPE' + grupo);
 
                       DbTiposAplicaciones.db
-                          .modificarNombre(grupo, grupoNuevo, 'MPC');
+                          .modificarNombre(grupo, grupoNuevo, 'MPE');
                     }
                     DbTiposAplicaciones.db.modificarGrupo(grupo, grupoNuevo);
                   }

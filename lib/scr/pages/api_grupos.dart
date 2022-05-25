@@ -364,12 +364,12 @@ class ApiGruposPage extends StatelessWidget {
                 minimumSize: Size(30, 20),
                 primary: Color.fromRGBO(249, 75, 11, 1)),
             onPressed: () {
-              final nuevo = new ApiTipos(grupo: 'MPD', nombre: grupo);
-              if (!apiProvider.listaMenu.contains('MPD' + grupo)) {
+              final nuevo = new ApiTipos(grupo: 'MPF', nombre: grupo);
+              if (!apiProvider.listaMenu.contains('MPF' + grupo)) {
                 /// actualizar lista MENU
                 ///
                 Provider.of<AplicacionesProvider>(context, listen: false)
-                    .agregarMenu('MPD' + grupo);
+                    .agregarMenu('MPF' + grupo);
 
                 DbTiposAplicaciones.db.nuevoTipo(nuevo);
               }
@@ -462,14 +462,14 @@ class ApiGruposPage extends StatelessWidget {
                     // agregar a BD
 
                     apiProvider.cambiarGrupoApi(grupo, grupoNuevo);
-                    if (apiProvider.listaMenu.contains('MPD' + grupo)) {
+                    if (apiProvider.listaMenu.contains('MPF' + grupo)) {
                       Provider.of<AplicacionesProvider>(context, listen: false)
-                          .agregarMenu('MPD' + grupoNuevo);
+                          .agregarMenu('MPF' + grupoNuevo);
                       Provider.of<AplicacionesProvider>(context, listen: false)
-                          .eliminarTipoMP('MPD' + grupo);
+                          .eliminarTipoMP('MPF' + grupo);
 
                       DbTiposAplicaciones.db
-                          .modificarNombre(grupo, grupoNuevo, 'MPD');
+                          .modificarNombre(grupo, grupoNuevo, 'MPF');
                     }
                     DbTiposAplicaciones.db.modificarGrupo(grupo, grupoNuevo);
                   }
