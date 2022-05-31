@@ -346,6 +346,7 @@ class BotonesEncabezado extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
+              //   color: Colors.black,
               child: Column(
                 children: [
                   Container(
@@ -354,12 +355,16 @@ class BotonesEncabezado extends StatelessWidget {
                     // padding: EdgeInsets.only(top: 5),
                     child: Center(child: ConfigWidget()),
                   ),
+                  SizedBox(
+                    height: 18,
+                  ),
                   HoraFecha(),
                   FechaReloj(),
                 ],
               ),
             ),
             Container(
+              //    color: Colors.pink,
               child: Column(
                 children: [
                   Container(

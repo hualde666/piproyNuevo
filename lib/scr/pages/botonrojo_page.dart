@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:piproy/scr/models/contactos_modelo.dart';
+import 'package:piproy/scr/pages/contacts_por_grupo.dart';
 
 import 'package:piproy/scr/pages/envio_emergencia.dart';
 import 'package:piproy/scr/providers/aplicaciones_provider.dart';
@@ -12,6 +13,10 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:audioplayers/audioplayers.dart';
+
+import '../funciones/url_funciones.dart';
+import '../models/api_tipos.dart';
+import '../providers/db_provider.dart';
 
 class BotonRojoPage extends StatefulWidget {
   @override
@@ -110,50 +115,53 @@ conListaEmergenia(BuildContext context, List<ContactoDatos> listaE) {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'EMERGENCIA ',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 40.0,
-              ),
-            ),
+            // Text(
+            //   'EMERGENCIA ',
+            //   textAlign: TextAlign.center,
+            //   style: TextStyle(
+            //     color: Theme.of(context).primaryColor,
+            //     fontWeight: FontWeight.bold,
+            //     fontSize: 40.0,
+            //   ),
+            // ),
             Container(
               child: Text(
                 'Enviar mensaje a mis contactos de emergencia',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Theme.of(context).primaryColor,
-                  fontSize: 30.0,
+                  fontSize: 35.0,
                 ),
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 40,
             ),
             GestureDetector(
               onTap: () {
                 //******************* */
                 // await mandarSMS(listaE);
-                final AudioCache player = new AudioCache();
-                player.play('audio_emergencia.mpeg');
+                // final AudioCache player = new AudioCache();
+                //player.play('audio_emergencia.mpeg');
                 mandarSMS(listaE);
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ResumenEnvioPage(
-                              listaE: listaE,
-                            )));
+                // llamar('584264183297');
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => ResumenEnvioPage(
+                //               listaE: listaE,
+                //             )));
               },
               child: Container(
                 height: MediaQuery.of(context).size.width <= 320 ? 150 : 180,
                 width: MediaQuery.of(context).size.width <= 320 ? 150 : 180,
                 decoration: BoxDecoration(
-                    color: pref.paleta == '4' ? Colors.black : Colors.white,
+                    color: pref.paleta == '4'
+                        ? Colors.black
+                        : Colors.red[900], //Colors.white,
                     borderRadius: BorderRadius.circular(100.0),
-                    border: Border.all(
-                        color: Theme.of(context).primaryColor, width: 4.0),
+                    // border: Border.all(
+                    //     color: Theme.of(context).primaryColor, width: 4.0),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.5),
@@ -165,23 +173,23 @@ conListaEmergenia(BuildContext context, List<ContactoDatos> listaE) {
                 child: Center(
                   child: Text('Enviar',
                       style: TextStyle(
-                        fontSize: 50.0,
-                        color: pref.paleta == '4'
-                            ? Theme.of(context).primaryColor
-                            : Colors.black,
-                      )),
+                          fontSize: 50.0,
+                          color: pref.paleta == '4'
+                              ? Theme.of(context).primaryColor
+                              : Colors.white //Colors.black,
+                          )),
                 ),
               ),
             )
           ],
         ),
-        decoration: BoxDecoration(
-            color: pref.paleta == '4'
-                ? Colors.black
-                : Color.fromRGBO(200, 0, 0, 1.0),
-            borderRadius: BorderRadius.circular(20.0),
-            border:
-                Border.all(color: Theme.of(context).primaryColor, width: 4.0)),
+        // decoration: BoxDecoration(
+        //     color: pref.paleta == '4'
+        //         ? Colors.black
+        //         : Color.fromRGBO(200, 0, 0, 1.0),
+        //     borderRadius: BorderRadius.circular(20.0),
+        //     border:
+        //         Border.all(color: Theme.of(context).primaryColor, width: 4.0)),
       ),
     ),
   );
@@ -190,6 +198,7 @@ conListaEmergenia(BuildContext context, List<ContactoDatos> listaE) {
 sinListaEmergenia(BuildContext context) {
   final pref = Provider.of<Preferencias>(context);
   double height = (MediaQuery.of(context).size.height * 0.60);
+
   return SingleChildScrollView(
     child: Center(
         child: Container(
@@ -199,17 +208,17 @@ sinListaEmergenia(BuildContext context) {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            'ADVERTENCIA',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: pref.paleta == '4'
-                  ? Theme.of(context).primaryColor
-                  : Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 40.0,
-            ),
-          ),
+          // Text(
+          //   'ADVERTENCIA',
+          //   textAlign: TextAlign.center,
+          //   style: TextStyle(
+          //     color: pref.paleta == '4'
+          //         ? Theme.of(context).primaryColor
+          //         : Colors.white,
+          //     fontWeight: FontWeight.bold,
+          //     fontSize: 40.0,
+          //   ),
+          // ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 10),
             child: Text(
@@ -218,7 +227,7 @@ sinListaEmergenia(BuildContext context) {
               style: TextStyle(
                 color: pref.paleta == '4'
                     ? Theme.of(context).primaryColor
-                    : Colors.black,
+                    : Colors.white,
                 fontSize: 30.0,
               ),
             ),
@@ -226,15 +235,45 @@ sinListaEmergenia(BuildContext context) {
           SizedBox(
             height: 50.0,
           ),
+          pref.modoConfig
+              ? ElevatedButton(
+                  onPressed: () {
+                    final String grupo = 'Emergencia';
+                    final apiProvider = new AplicacionesProvider();
+
+                    if (!apiProvider.contactgrupos.contains(grupo)) {
+                      Provider.of<AplicacionesProvider>(context, listen: false)
+                          .agregarGrupoContact(grupo);
+                      final nuevo =
+                          new ApiTipos(grupo: grupo, nombre: "", tipo: "2");
+                      DbTiposAplicaciones.db.nuevoTipo(nuevo);
+                    }
+                    Provider.of<AplicacionesProvider>(context, listen: false)
+                        .tipoSeleccion = grupo;
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ContactsPorGrupoPage()));
+                  },
+                  child: Container(
+                    width: 100,
+                    child: Center(
+                      child: Text(
+                        'registrar',
+                      ),
+                    ),
+                  ))
+              : Container(),
+          SizedBox(
+            height: 50.0,
+          ),
         ],
       ),
-      decoration: BoxDecoration(
-          color: pref.paleta == '4'
-              ? Theme.of(context).backgroundColor
-              : Color.fromRGBO(249, 75, 11, 1),
-          borderRadius: BorderRadius.circular(20.0),
-          border:
-              Border.all(color: Theme.of(context).primaryColor, width: 4.0)),
+      // decoration: BoxDecoration(
+// Color.fromRGBO(249, 75, 11, 1),
+      // borderRadius: BorderRadius.circular(20.0),
+      // border:
+      //     Border.all(color: Theme.of(context).primaryColor, width: 4.0)),
     )),
   );
 }

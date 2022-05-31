@@ -50,7 +50,7 @@ class AyudaPaletaPage extends StatelessWidget {
               //width: double.infinity,
               margin: EdgeInsets.only(left: 6, right: 6, top: 3),
               child: Text(
-                'Solo tiene que tocar una de las opciones y color cambiará automaticamente.',
+                'Solo tiene que tocar una de las opciones y el color cambiará automaticamente.',
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                     fontSize: 25, color: Theme.of(context).primaryColor),

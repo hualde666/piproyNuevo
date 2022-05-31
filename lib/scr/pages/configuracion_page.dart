@@ -12,6 +12,7 @@ import 'package:piproy/scr/pages/mensaje_emergencia.dart';
 import 'package:piproy/scr/pages/opciones_page.dart';
 import 'package:piproy/scr/pages/paletta_colores.dart';
 import 'package:piproy/scr/pages/presentacion_page.dart';
+import 'package:piproy/scr/pages/select_ayuda.dart';
 import 'package:piproy/scr/providers/aplicaciones_provider.dart';
 import 'package:piproy/scr/providers/db_provider.dart';
 
@@ -37,6 +38,15 @@ class ConfiguracionPage extends StatelessWidget {
         body: ListView(children: [
           SizedBox(
             height: 20,
+          ),
+          Divider(
+            height: 10,
+            color: Theme.of(context).primaryColor,
+          ),
+          ItemConfig(
+            icon: Icons.help,
+            texto: 'Manual',
+            onPress: SelecionAyuda(),
           ),
           Divider(
             height: 10,

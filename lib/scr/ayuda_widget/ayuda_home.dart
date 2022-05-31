@@ -35,42 +35,7 @@ class AyudaHome extends StatelessWidget {
       SizedBox(
         height: 10,
       ),
-      Divider(
-        height: 10,
-        color: Theme.of(context).primaryColor,
-      ),
-      //**********************************SALIDA******** */
-      Container(
-        margin: EdgeInsets.only(left: 5),
-        child: Column(
-          children: [
-            BotonSalida(),
-            Container(
-              margin: EdgeInsets.only(left: 10),
-              height: 70,
-              // width: 250,
-              child: Center(
-                child: Text(
-                  'Boton de Salida:',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                      fontSize: 25, color: Theme.of(context).primaryColor),
-                ),
-              ),
-            ),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.only(left: 5, right: 6, top: 3),
-              child: Text(
-                'Cierra la aplicación y regresa al menu original del celular.',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
-            ),
-          ],
-        ),
-      ),
+
       Divider(
         height: 10,
         color: Theme.of(context).primaryColor,
@@ -149,45 +114,6 @@ class AyudaHome extends StatelessWidget {
         height: 10,
       ),
       //**********************************AYUDA******** */
-      Container(
-        // height: 150,
-        margin: EdgeInsets.only(left: 5),
-        child: Column(
-          children: [
-            BotonAyudaDibujo(),
-            Container(
-              margin: EdgeInsets.only(left: 10),
-              height: 70,
-              // width: 250,
-              child: Center(
-                child: Text(
-                  'Ayuda:',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                      fontSize: 25, color: Theme.of(context).primaryColor),
-                ),
-              ),
-            ),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Explica la función de cada elemento en la aplicación',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
-            ),
-          ],
-        ),
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Divider(
-        height: 10,
-        color: Theme.of(context).primaryColor,
-      ),
       SizedBox(
         height: 10,
       ),
@@ -252,73 +178,73 @@ class AyudaHome extends StatelessWidget {
         height: 10,
       ),
 
-      Container(
-        // height: 150,
-        margin: EdgeInsets.only(left: 5),
-        child: Column(
-          children: [
-            Container(
-                margin: EdgeInsets.symmetric(horizontal: 130),
-                child: widgetHorizontal(context, Icons.battery_std, 'bateria')),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Indicador del nivel de carga de la batería. En amarillo carga menor al 50% y rojo carga menor del 20%',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
-            ),
-          ],
-        ),
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Divider(
-        height: 10,
-        color: Theme.of(context).primaryColor,
-      ),
-      SizedBox(
-        height: 10,
-      ),
+      // Container(
+      //   // height: 150,
+      //   margin: EdgeInsets.only(left: 5),
+      //   child: Column(
+      //     children: [
+      //       Container(
+      //           margin: EdgeInsets.symmetric(horizontal: 130),
+      //           child: widgetHorizontal(context, Icons.battery_std, 'bateria')),
+      //       Container(
+      //         width: double.infinity,
+      //         margin: EdgeInsets.only(left: 6, right: 6, top: 3),
+      //         child: Text(
+      //           'Indicador del nivel de carga de la batería. En amarillo carga menor al 50% y rojo carga menor del 20%',
+      //           textAlign: TextAlign.justify,
+      //           style: TextStyle(
+      //               fontSize: 25, color: Theme.of(context).primaryColor),
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
+      // SizedBox(
+      //   height: 10,
+      // ),
+      // Divider(
+      //   height: 10,
+      //   color: Theme.of(context).primaryColor,
+      // ),
+      // SizedBox(
+      //   height: 10,
+      // ),
 
-      Container(
-        // height: 150,
-        margin: EdgeInsets.only(left: 5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 130),
-              child: widgetHorizontal(
-                context,
-                Icons.wifi,
-                'wifi',
-              ),
-            ),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Indica si el celular tiene activa la señal Wifi. Rojo si no lo está.',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
-            ),
-          ],
-        ),
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Divider(
-        height: 10,
-        color: Theme.of(context).primaryColor,
-      ),
+      // Container(
+      //   // height: 150,
+      //   margin: EdgeInsets.only(left: 5),
+      //   child: Column(
+      //     crossAxisAlignment: CrossAxisAlignment.center,
+      //     // mainAxisAlignment: MainAxisAlignment.center,
+      //     children: [
+      //       Container(
+      //         margin: EdgeInsets.symmetric(horizontal: 130),
+      //         child: widgetHorizontal(
+      //           context,
+      //           Icons.wifi,
+      //           'wifi',
+      //         ),
+      //       ),
+      //       Container(
+      //         width: double.infinity,
+      //         margin: EdgeInsets.only(left: 6, right: 6, top: 3),
+      //         child: Text(
+      //           'Indica si el celular tiene activa la señal Wifi. Rojo si no lo está.',
+      //           textAlign: TextAlign.justify,
+      //           style: TextStyle(
+      //               fontSize: 25, color: Theme.of(context).primaryColor),
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
+      // SizedBox(
+      //   height: 10,
+      // ),
+      // Divider(
+      //   height: 10,
+      //   color: Theme.of(context).primaryColor,
+      // ),
       SizedBox(
         height: 10,
       ),
@@ -394,81 +320,81 @@ class AyudaHome extends StatelessWidget {
         height: 10,
       ),
 
-      Container(
-        // height: 150,
-        margin: EdgeInsets.only(left: 5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              child: widgetHorizontal(
-                context,
-                Icons.signal_cellular_alt_rounded,
-                'linea',
-              ),
-            ),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Indica si tiene linea telefónica. En rojo no la tiene.',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
-            ),
-          ],
-        ),
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Divider(
-        height: 10,
-        color: Theme.of(context).primaryColor,
-      ),
-      SizedBox(
-        height: 10,
-      ),
+      // Container(
+      //   // height: 150,
+      //   margin: EdgeInsets.only(left: 5),
+      //   child: Column(
+      //     crossAxisAlignment: CrossAxisAlignment.center,
+      //     // mainAxisAlignment: MainAxisAlignment.center,
+      //     children: [
+      //       Container(
+      //         child: widgetHorizontal(
+      //           context,
+      //           Icons.signal_cellular_alt_rounded,
+      //           'linea',
+      //         ),
+      //       ),
+      //       Container(
+      //         width: double.infinity,
+      //         margin: EdgeInsets.only(left: 6, right: 6, top: 3),
+      //         child: Text(
+      //           'Indica si tiene linea telefónica. En rojo no la tiene.',
+      //           textAlign: TextAlign.justify,
+      //           style: TextStyle(
+      //               fontSize: 25, color: Theme.of(context).primaryColor),
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
+      // SizedBox(
+      //   height: 10,
+      // ),
+      // Divider(
+      //   height: 10,
+      //   color: Theme.of(context).primaryColor,
+      // ),
+      // SizedBox(
+      //   height: 10,
+      // ),
 
-      Container(
-        // height: 150,
-        margin: EdgeInsets.only(left: 5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              child: widgetHorizontal(
-                context,
-                Icons.gps_fixed_rounded,
-                'gps',
-              ),
-            ),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Indica si GPS está activo. En rojo no está activo.',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
-            ),
-          ],
-        ),
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Divider(
-        height: 10,
-        color: Theme.of(context).primaryColor,
-      ),
-      SizedBox(
-        height: 10,
-      ),
+      // Container(
+      //   // height: 150,
+      //   margin: EdgeInsets.only(left: 5),
+      //   child: Column(
+      //     crossAxisAlignment: CrossAxisAlignment.center,
+      //     // mainAxisAlignment: MainAxisAlignment.center,
+      //     children: [
+      //       Container(
+      //         child: widgetHorizontal(
+      //           context,
+      //           Icons.gps_fixed_rounded,
+      //           'gps',
+      //         ),
+      //       ),
+      //       Container(
+      //         width: double.infinity,
+      //         margin: EdgeInsets.only(left: 6, right: 6, top: 3),
+      //         child: Text(
+      //           'Indica si GPS está activo. En rojo no está activo.',
+      //           textAlign: TextAlign.justify,
+      //           style: TextStyle(
+      //               fontSize: 25, color: Theme.of(context).primaryColor),
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
+      // SizedBox(
+      //   height: 10,
+      // ),
+      // Divider(
+      //   height: 10,
+      //   color: Theme.of(context).primaryColor,
+      // ),
+      // SizedBox(
+      //   height: 10,
+      // ),
 
       Container(
         // height: 150,

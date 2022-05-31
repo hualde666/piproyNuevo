@@ -57,11 +57,11 @@ class ResumenEnvioPage extends StatelessWidget {
 
 Widget headerResumen(BuildContext context) {
   return PreferredSize(
-    preferredSize: Size.fromHeight(145.0),
+    preferredSize: Size.fromHeight(160.0),
     // here the desired height
     child: Container(
       padding: EdgeInsets.only(top: 5),
-      height: 145,
+      height: 160,
       child: Column(
         children: [
           tresBotonesHeader(context, true, 'ResumenEnvio'),

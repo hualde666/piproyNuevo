@@ -5,6 +5,7 @@ import 'package:piproy/scr/ayuda_widget/ayuda_home.dart';
 import 'package:piproy/scr/widgets/boton_ayuda_dibujo.dart';
 import 'package:piproy/scr/widgets/boton_rojo.dart';
 import 'package:piproy/scr/widgets/boton_verde.dart';
+import 'package:piproy/scr/widgets/header_app.dart';
 
 import 'package:piproy/scr/widgets/inicio_boton.dart';
 
@@ -22,12 +23,14 @@ import '../ayuda_widget/ayuda_paleta.dart';
 import '../ayuda_widget/ayuda_seleccion_contactos.dart';
 
 class Ayuda extends StatelessWidget {
+  final String pagina;
+  Ayuda({@required this.pagina});
   @override
   Widget build(BuildContext context) {
-    final String pagina = ModalRoute.of(context).settings.arguments;
+    // final String pagina = ModalRoute.of(context).settings.arguments;
     return SafeArea(
       child: Scaffold(
-        appBar: headerAyuda(context, 'Ayuda'),
+        appBar: headerApp(context, 'Manual', Text(''), 0.0, true, ''),
         // backgroundColor: Colors.white,
         body: contenido(pagina),
       ),
