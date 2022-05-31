@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:piproy/scr/pages/home2_page.dart';
+import 'package:piproy/scr/providers/usuario_pref.dart';
+import 'package:provider/provider.dart';
 
 Widget botonBackHeader(BuildContext context, String pagina) {
   double width = MediaQuery.of(context).size.width;
   //double height = MediaQuery.of(context).size.height;
+  final pref = Provider.of<Preferencias>(context);
   double ancho = 100;
   double alto = 100;
   double font = 20;
@@ -30,11 +33,14 @@ Widget botonBackHeader(BuildContext context, String pagina) {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(Icons.arrow_back_outlined, size: icon),
-          Text('ATRAS',
-              style: TextStyle(
+          Text(
+            'ATRAS',
+            style: TextStyle(
                 fontSize: font,
-              ) //color: Colors.red),
-              )
+                color: pref.paleta == '4'
+                    ? Theme.of(context).primaryColor
+                    : Colors.white70),
+          ) //color: Colors.red),
         ],
       ),
       decoration: BoxDecoration(

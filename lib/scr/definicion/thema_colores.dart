@@ -42,8 +42,8 @@ ThemeData themaApi(String color) {
         //  255, 225, 217, 217), //Color.fromARGB(255, 251, 246, 240),
         //Colors.grey[800], //  Color.fromRGBO(55, 57, 84, 1.0),
         textTheme: TextTheme(
-            bodyText1: TextStyle(color: Colors.black),
-            bodyText2: TextStyle(color: Colors.black)),
+            bodyText1: TextStyle(color: Colors.white),
+            bodyText2: TextStyle(color: Colors.white)),
         iconTheme: IconThemeData(color: Colors.white, size: 40),
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(

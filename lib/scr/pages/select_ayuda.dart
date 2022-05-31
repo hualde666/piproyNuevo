@@ -128,7 +128,8 @@ class SelecionAyuda extends StatelessWidget {
         child: Center(
           child: Text(
             titulo,
-            style: TextStyle(fontSize: 25),
+            style:
+                TextStyle(fontSize: 25, color: Theme.of(context).primaryColor),
             textAlign: TextAlign.center,
           ),
         ),

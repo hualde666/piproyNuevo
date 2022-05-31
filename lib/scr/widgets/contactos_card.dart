@@ -47,7 +47,7 @@ class _TarjetaContacto2 extends State<TarjetaContacto2> {
         ? GestureDetector(
             child: Container(
               height: oneTap ? 225 : 92,
-              margin: EdgeInsets.symmetric(horizontal: 2, vertical: 2.0),
+              margin: EdgeInsets.symmetric(horizontal: 5, vertical: 2.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
