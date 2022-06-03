@@ -28,6 +28,10 @@ class PaletaPage extends StatelessWidget {
       SizedBox(
         height: 5,
       ),
+      colores(context, Colors.white, Colors.white, Colors.black, 5),
+      SizedBox(
+        height: 5,
+      ),
     ];
     return SafeArea(
       child: Scaffold(

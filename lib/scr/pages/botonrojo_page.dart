@@ -144,6 +144,7 @@ conListaEmergenia(BuildContext context, List<ContactoDatos> listaE) {
                 // final AudioCache player = new AudioCache();
                 //player.play('audio_emergencia.mpeg');
                 mandarSMS(listaE);
+                Navigator.pop(context);
                 // llamar('584264183297');
                 // Navigator.push(
                 //     context,
@@ -160,8 +161,11 @@ conListaEmergenia(BuildContext context, List<ContactoDatos> listaE) {
                         ? Colors.black
                         : Colors.red[900], //Colors.white,
                     borderRadius: BorderRadius.circular(100.0),
-                    // border: Border.all(
-                    //     color: Theme.of(context).primaryColor, width: 4.0),
+                    border: Border.all(
+                        color: pref.paleta == '4'
+                            ? Theme.of(context).primaryColor
+                            : Colors.red[900],
+                        width: 4.0),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(0.5),
@@ -173,11 +177,12 @@ conListaEmergenia(BuildContext context, List<ContactoDatos> listaE) {
                 child: Center(
                   child: Text('Enviar',
                       style: TextStyle(
-                          fontSize: 50.0,
-                          color: pref.paleta == '4'
-                              ? Theme.of(context).primaryColor
-                              : Colors.white //Colors.black,
-                          )),
+                        fontSize: 50.0,
+                        color: //pref.paleta == '4'
+                            //?
+                            Theme.of(context).primaryColor,
+                        // : Colors.white //Colors.black,
+                      )),
                 ),
               ),
             )
@@ -225,9 +230,10 @@ sinListaEmergenia(BuildContext context) {
               'Debe registrar sus contactos de emergencia para poder notificar la emergencia',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: pref.paleta == '4'
-                    ? Theme.of(context).primaryColor
-                    : Colors.white,
+                color: // pref.paleta == '4'
+                    //?
+                    Theme.of(context).primaryColor,
+                //    : Colors.white,
                 fontSize: 30.0,
               ),
             ),

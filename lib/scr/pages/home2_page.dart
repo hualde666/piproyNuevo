@@ -16,7 +16,7 @@ import 'package:piproy/scr/providers/usuario_pref.dart';
 import 'package:piproy/scr/widgets/boton_rojo.dart';
 
 import 'package:piproy/scr/widgets/contactos_card.dart';
-import 'package:piproy/scr/widgets/elemntos.dart';
+import 'package:piproy/scr/widgets/elementos.dart';
 
 import 'package:piproy/scr/widgets/encabezado_icon.dart';
 import 'package:piproy/scr/widgets/fecha.dart';
@@ -111,7 +111,9 @@ class _Home2PageState extends State<Home2Page> {
       listaOpciones.add(elementos(
           context,
           Text('Contactos',
-              style: TextStyle(fontSize: 40.0, color: Colors.white)),
+              style: TextStyle(
+                fontSize: 40.0,
+              )),
           60,
           'contactos',
           ''));
@@ -120,7 +122,14 @@ class _Home2PageState extends State<Home2Page> {
     if (pref.iAplicaciones) {
       listaOpciones.add(elementos(
           context,
-          Text('Aplicaciones', style: TextStyle(fontSize: 40.0)),
+          Text(
+            'Aplicaciones',
+            style: TextStyle(
+                fontSize: 40.0,
+                color: pref.paleta == '4' || pref.paleta == '5'
+                    ? Theme.of(context).primaryColor
+                    : Colors.white70),
+          ),
           60,
           'apigrupos',
           ''));
@@ -492,6 +501,7 @@ class BotonesEncabezado extends StatelessWidget {
 class ConfigWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final pref = Provider.of<Preferencias>(context);
     return GestureDetector(
       onTap: () {
         // Navigator.pushNamed(context, 'ayuda',
@@ -505,16 +515,20 @@ class ConfigWidget extends StatelessWidget {
           width: 40,
           height: 40,
           decoration: BoxDecoration(
-              color: Theme.of(context).backgroundColor,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black,
-                  blurRadius: 1,
-                  spreadRadius: 0.5,
-                  offset: Offset(0, 3),
-                ),
-              ],
-              borderRadius: BorderRadius.circular(100.0)),
+            color: Theme.of(context).backgroundColor,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black,
+                blurRadius: 1,
+                spreadRadius: 0.5,
+                offset: Offset(0, 3),
+              ),
+            ],
+            borderRadius: BorderRadius.circular(100.0),
+            border: pref.paleta == '4'
+                ? Border.all(color: Theme.of(context).primaryColor)
+                : Border.all(color: Theme.of(context).backgroundColor),
+          ),
           // border: Border.all(
           //     width: 0.5, color: Theme.of(context).primaryColor)),
           // margin: EdgeInsets.only(right: 5),

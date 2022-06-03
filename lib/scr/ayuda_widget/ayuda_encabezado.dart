@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../providers/usuario_pref.dart';
 
 List<Widget> ayudaEncabezado(BuildContext context, String titulo) {
-  final pref = Provider.of<Preferencias>(context);
   List<Widget> listaAyudaEncabezado = [
     SizedBox(
       height: 10,

@@ -28,6 +28,7 @@ class ConfiguracionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pref = Provider.of<Preferencias>(context);
+    final colorBloqueo = pref.paleta != '5' ? Colors.white38 : Colors.black26;
     return SafeArea(
       child: Scaffold(
         appBar: headerApp(
@@ -67,14 +68,14 @@ class ConfiguracionPage extends StatelessWidget {
                 size: 35.0,
                 color: pref.modoConfig
                     ? Theme.of(context).primaryColor
-                    : Colors.white38,
+                    : colorBloqueo,
               ),
               title: Text('Contactos envío mensaje de emergencia',
                   style: TextStyle(
                     fontSize: 25,
                     color: pref.modoConfig
                         ? Theme.of(context).primaryColor
-                        : Colors.white38,
+                        : colorBloqueo,
                   )),
               onTap: () {
                 //Navigator.pop(context);
@@ -105,14 +106,14 @@ class ConfiguracionPage extends StatelessWidget {
                 size: 35.0,
                 color: pref.modoConfig
                     ? Theme.of(context).primaryColor
-                    : Colors.white38,
+                    : colorBloqueo,
               ),
               title: Text('Contacto llamada de emergencia',
                   style: TextStyle(
                     fontSize: 25,
                     color: pref.modoConfig
                         ? Theme.of(context).primaryColor
-                        : Colors.white38,
+                        : colorBloqueo,
                   )),
               onTap: () {}),
           Divider(
@@ -161,14 +162,14 @@ class ConfiguracionPage extends StatelessWidget {
               size: 40.0,
               color: pref.modoConfig
                   ? Theme.of(context).primaryColor
-                  : Colors.white38,
+                  : colorBloqueo,
             ),
             title: Text('Contactanos',
                 style: TextStyle(
                   fontSize: 25,
                   color: pref.modoConfig
                       ? Theme.of(context).primaryColor
-                      : Colors.white38,
+                      : colorBloqueo,
                 )),
             onTap: correoVitalfon,
           ),
@@ -213,14 +214,14 @@ class ConfiguracionPage extends StatelessWidget {
                 size: 40.0,
                 color: pref.modoConfig
                     ? Theme.of(context).primaryColor
-                    : Colors.white38,
+                    : colorBloqueo,
               ),
               title: Text('Salir de vitalfon',
                   style: TextStyle(
                     fontSize: 25,
                     color: pref.modoConfig
                         ? Theme.of(context).primaryColor
-                        : Colors.white38,
+                        : colorBloqueo,
                   )),
               onTap: () {
                 if (pref.modoConfig) {
@@ -254,19 +255,18 @@ class ItemConfig extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pref = Provider.of<Preferencias>(context);
+    final colorBloqueo = pref.paleta != '5' ? Colors.white38 : Colors.black26;
     return ListTile(
       leading: Icon(
         icon,
         size: 40.0,
-        color:
-            pref.modoConfig ? Theme.of(context).primaryColor : Colors.white38,
+        color: pref.modoConfig ? Theme.of(context).primaryColor : colorBloqueo,
       ),
       title: Text(texto,
           style: TextStyle(
             fontSize: 25,
-            color: pref.modoConfig
-                ? Theme.of(context).primaryColor
-                : Colors.white38,
+            color:
+                pref.modoConfig ? Theme.of(context).primaryColor : colorBloqueo,
           )),
       onTap: () {
         if (pref.modoConfig) {

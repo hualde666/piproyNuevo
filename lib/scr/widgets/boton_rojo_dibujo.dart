@@ -49,6 +49,9 @@ class BotonRojo extends StatelessWidget {
               offset: Offset(0, 3),
             ),
           ],
+          border: pref.paleta == '4'
+              ? Border.all(color: Theme.of(context).primaryColor)
+              : Border.all(color: Colors.red[900]),
           borderRadius: BorderRadius.all(Radius.circular(100))),
       // border:
       //     Border.all(color: Theme.of(context).primaryColor, width: 0.5)),

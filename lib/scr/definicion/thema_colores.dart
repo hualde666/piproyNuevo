@@ -144,6 +144,35 @@ ThemeData themaApi(String color) {
         )),
       );
       break;
+    case '5':
+      tema = ThemeData(
+        primaryColor: Colors.black54,
+        backgroundColor: Colors.white, // Color.fromARGB(255, 143, 185, 168),
+        scaffoldBackgroundColor: Colors.white, //Color.fromARGB(
+        //  255, 225, 217, 217), //Color.fromARGB(255, 251, 246, 240),
+        //Colors.grey[800], //  Color.fromRGBO(55, 57, 84, 1.0),
+        textTheme: TextTheme(
+            bodyText1: TextStyle(color: Colors.black54),
+            bodyText2: TextStyle(color: Colors.black54)),
+        iconTheme: IconThemeData(color: Colors.black54, size: 40),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+          primary: Color.fromRGBO(249, 75, 11, 1),
+          textStyle: TextStyle(fontSize: 25, color: Colors.white),
+        )),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          extendedTextStyle: TextStyle(fontSize: 20, color: Colors.white),
+          backgroundColor: Color.fromRGBO(249, 75, 11, 1),
+        ),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            backgroundColor: Color.fromRGBO(249, 75, 11, 1),
+            selectedIconTheme:
+                IconThemeData(color: Colors.green, opacity: 0.6, size: 40.0),
+            unselectedIconTheme: IconThemeData(
+                color: Colors.green[100], opacity: 0.6, size: 30.0)),
+
+        // style: BorderStyle()
+      );
   }
   return tema;
 }

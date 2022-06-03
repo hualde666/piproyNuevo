@@ -159,7 +159,8 @@ class _SelectContactsPageState extends State<SelectContactsPage> {
                 tresBotonesHeader(context, true, 'ContactoSeleccion'),
                 Text(
                   'Seleccion de Contactos',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
+                  style: TextStyle(
+                      color: Theme.of(context).primaryColor, fontSize: 25),
                 ),
                 GestureDetector(
                     onTap: () {

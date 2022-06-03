@@ -32,20 +32,22 @@ Widget botonBackHeader(BuildContext context, String pagina) {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.arrow_back_outlined, size: icon),
+          Icon(Icons.arrow_back_outlined,
+              size: icon,
+              color: pref.paleta == '4' || pref.paleta == '5'
+                  ? Theme.of(context).primaryColor
+                  : Colors.white70),
           Text(
             'ATRAS',
             style: TextStyle(
                 fontSize: font,
-                color: pref.paleta == '4'
+                color: pref.paleta == '4' || pref.paleta == '5'
                     ? Theme.of(context).primaryColor
                     : Colors.white70),
           ) //color: Colors.red),
         ],
       ),
       decoration: BoxDecoration(
-          color: //pref.paleta == '4'
-              Theme.of(context).backgroundColor,
           boxShadow: [
             BoxShadow(
               //  color: Colors.black,
@@ -54,7 +56,11 @@ Widget botonBackHeader(BuildContext context, String pagina) {
               offset: Offset(0, 3),
             ),
           ],
-
+          color: //pref.paleta == '4'
+              Theme.of(context).backgroundColor,
+          border: pref.paleta == '4'
+              ? Border.all(color: Theme.of(context).primaryColor)
+              : Border.all(color: Theme.of(context).backgroundColor),
           //  : Colors.green[900],
           borderRadius: BorderRadius.all(Radius.circular(100))),
       //     border:

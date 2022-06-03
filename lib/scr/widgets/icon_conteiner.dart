@@ -15,9 +15,12 @@ import 'package:piproy/scr/providers/contactos_provider.dart';
 import 'package:piproy/scr/providers/estado_celular.dart';
 import 'package:provider/provider.dart';
 
+import '../providers/usuario_pref.dart';
+
 Widget conteinerIcon(
     BuildContext context, Icon icon, String tarea, ContactoDatos contacto) {
   final celProvider = Provider.of<EstadoProvider>(context);
+  final pref = Provider.of<Preferencias>(context);
   bool activoGps = celProvider.conexionGps;
   bool activoDatos = celProvider.conexionDatos;
   bool activoWifi = celProvider.conexionWifi;
@@ -81,8 +84,19 @@ Widget conteinerIcon(
           width: 70.0,
           height: 70.0,
           decoration: BoxDecoration(
-              color: Theme.of(context).backgroundColor,
-              borderRadius: BorderRadius.circular(80)),
+            color: Theme.of(context).backgroundColor,
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 1,
+                spreadRadius: 0.5,
+                offset: Offset(0, 3),
+              ),
+            ],
+            borderRadius: BorderRadius.circular(80),
+            border: pref.paleta == '4'
+                ? Border.all(color: Theme.of(context).primaryColor)
+                : Border.all(color: Theme.of(context).backgroundColor),
+          ),
           // border: Border.all(
           //     color: Theme.of(context).primaryColor, width: 0.8)),
           child: icon,
@@ -226,13 +240,26 @@ Widget dispositivo(BuildContext context, bool activo, IconData icon) {
 Widget dispLinterna(BuildContext context, bool activo, IconData icon) {
   final Color color =
       activo ? Colors.yellow : Theme.of(context).backgroundColor;
-
+  final pref = Provider.of<Preferencias>(context);
   return Center(
       child: Container(
     width: 70.0,
     height: 70.0,
-    decoration:
-        BoxDecoration(color: color, borderRadius: BorderRadius.circular(80)),
+    decoration: BoxDecoration(
+      color: color,
+      boxShadow: [
+        BoxShadow(
+          //  color: Colors.black,
+          blurRadius: 1,
+          spreadRadius: 0.5,
+          offset: Offset(0, 3),
+        ),
+      ],
+      borderRadius: BorderRadius.circular(80),
+      border: pref.paleta == '4'
+          ? Border.all(color: Theme.of(context).primaryColor)
+          : Border.all(color: Theme.of(context).backgroundColor),
+    ),
     //    border: Border.all(color: Theme.of(context).primaryColor, width: 0.5)),
     child: Center(
         child: Icon(

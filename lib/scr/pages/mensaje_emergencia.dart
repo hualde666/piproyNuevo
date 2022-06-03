@@ -117,7 +117,9 @@ class _EmergenciaMensajeState extends State<EmergenciaMensaje> {
                     Container(
                       child: Text(
                         'Redacte el mensaje que desea enviar a sus contactos de emergencia en caso de un incidente.',
-                        style: TextStyle(fontSize: 20, color: Colors.white),
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Theme.of(context).primaryColor),
                         textAlign: TextAlign.center,
                       ),
                     ),

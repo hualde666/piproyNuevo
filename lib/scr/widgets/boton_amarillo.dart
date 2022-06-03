@@ -30,14 +30,14 @@ Widget botonHomeHeader(BuildContext context, String pagina) {
         children: [
           Icon(Icons.home,
               size: icon,
-              color: pref.paleta == '4'
+              color: pref.paleta == '4' || pref.paleta == '5'
                   ? Theme.of(context).primaryColor
                   : Colors.white70),
           Text(
             'INICIO',
             style: TextStyle(
                 fontSize: font,
-                color: pref.paleta == '4'
+                color: pref.paleta == '4' || pref.paleta == '5'
                     ? Theme.of(context).primaryColor
                     : Colors.white70),
           )
@@ -54,6 +54,9 @@ Widget botonHomeHeader(BuildContext context, String pagina) {
           ],
           color: // pref.paleta == '4'
               Theme.of(context).backgroundColor,
+          border: pref.paleta == '4'
+              ? Border.all(color: Theme.of(context).primaryColor)
+              : Border.all(color: Theme.of(context).backgroundColor),
           // : Colors.yellow[900],
           borderRadius: BorderRadius.all(Radius.circular(100))),
       // border:

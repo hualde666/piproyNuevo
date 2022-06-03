@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 
 import 'package:piproy/scr/definicion/thema_colores.dart';
 import 'package:piproy/scr/pages/api_grupos.dart';
-import 'package:piproy/scr/pages/ayuda.dart';
 
 import 'package:piproy/scr/pages/conta_grupos.dart';
 
@@ -73,6 +72,6 @@ Map<String, WidgetBuilder> get rutasApp {
     'contactos': (_) => ContactsGruposPage(),
     'apigrupos': (_) => ApiGruposPage(),
     'instalar': (_) => BienvenidaPage(),
-    'ayuda': (_) => Ayuda(),
+    // 'ayuda': (_) => Ayuda(),
   };
 }
