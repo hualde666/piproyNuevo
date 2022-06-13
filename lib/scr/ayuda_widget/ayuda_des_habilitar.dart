@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../widgets/parrafos_ayuda.dart';
 
-class AyudaConfigurarPage extends StatelessWidget {
+class AyudaDessHabilitar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _listaAyudaHome(context);
@@ -20,7 +20,7 @@ class AyudaConfigurarPage extends StatelessWidget {
 
   List<Widget> _crearListaAyuda(BuildContext context) {
     List<Widget> lista = [];
-    // lista.addAll(ayudaEncabezado(context, 'Configuración de vitalfon'));
+    // lista.addAll(ayudaEncabezado(context, 'Mensaje de Emergencia'));
     List<Widget> lista2 = [
       Container(
         margin: EdgeInsets.only(left: 5),
@@ -33,29 +33,22 @@ class AyudaConfigurarPage extends StatelessWidget {
             ),
             AyudaParrafo(
               texto:
-                  '     En esta sección están disponibles todas las opciones para configurar el app de acuerdo a las necesidades del usuario final.',
+                  '     Se definen como elementos en vitalfon a: los íconos de teléfono, linterna, mensaje, reloj/alarma, búsqueda con Google; el grupo "Contactos" (Todos los contactos) y el grupo "Aplicaciones" (Todas las aplicaciones)',
             ),
             SizedBox(
               height: 10,
             ),
             AyudaParrafo(
               texto:
-                  '    Comience configurando el mensaje de emergencia y luego siga el orden de las secciones que aparecen en Configuración.',
+                  '    Seleccione aquellos que quiera que aparezcan en la pantalla de inicio; deseleccione para remover elementos.',
             ),
             SizedBox(
               height: 10,
-            ),
-            AyudaParrafo(
-              texto:
-                  '    Una vez concluida la configuración del app, deberá bloquear la configuración para evitar que el usuario final la modifique accidentalmente.',
-              fontweigth: FontWeight.w900,
-              fontsize: 30,
             ),
           ],
         ),
       ),
     ];
-
     lista.addAll(lista2);
     return lista;
   }

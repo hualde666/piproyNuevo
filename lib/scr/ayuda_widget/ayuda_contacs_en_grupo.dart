@@ -19,7 +19,7 @@ class AyudaContactosPorGrupos extends StatelessWidget {
 
   List<Widget> _crearListaAyuda(BuildContext context) {
     List<Widget> lista = [];
-    lista.addAll(ayudaEncabezado(context, 'Contactos por grupo'));
+    //  lista.addAll(ayudaEncabezado(context, 'Contactos por grupo'));
     List<Widget> lista2 = [
       SizedBox(
         height: 10,

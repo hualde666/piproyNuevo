@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:piproy/scr/ayuda_widget/ayuda_encabezado.dart';
+
+import '../widgets/parrafos_ayuda.dart';
 
 class AyudaMensajeEmergenciaPage extends StatelessWidget {
   @override
@@ -19,89 +20,36 @@ class AyudaMensajeEmergenciaPage extends StatelessWidget {
 
   List<Widget> _crearListaAyuda(BuildContext context) {
     List<Widget> lista = [];
-    lista.addAll(ayudaEncabezado(context, 'Mensaje de Emergencia'));
+    // lista.addAll(ayudaEncabezado(context, 'Mensaje de Emergencia'));
     List<Widget> lista2 = [
-      SizedBox(
-        height: 10,
-      ),
       Container(
         margin: EdgeInsets.only(left: 5),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              // width: 150,
-              // margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-
-              child: Center(
-                child: Text(
-                  'Mensaje de Emergencia',
-                  style: TextStyle(
-                    fontSize: 25,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-              ),
+            SizedBox(
+              height: 30,
+            ),
+            AyudaParrafo(
+              texto:
+                  '     Redacte/edite el mensaje de emergencia (SMS) que recibirán los contactos seleccionados al pulsar el botón de emergencia (SOS).',
             ),
             SizedBox(
               height: 10,
             ),
-            Container(
-              //width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Escriba aquí el mesanje de emergencia que desea enviar a sus contacos en caso de una emergencia.  ',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Para cerrar el teclado, toque cualquier espacio fuera del mensaje de emergencia.',
-                textAlign: TextAlign.justify,
-                style: TextStyle(fontSize: 25),
-              ),
+            AyudaParrafo(
+              texto:
+                  '    El app vitalfon incluye originalmente un mensaje genérico.',
             ),
             SizedBox(
               height: 10,
             ),
-            Divider(
-              height: 10,
-              color: Theme.of(context).primaryColor,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              width: 150,
-              margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-              decoration: BoxDecoration(
-                  color: Color.fromRGBO(192, 57, 43, 1),
-                  borderRadius: BorderRadius.circular(20.0),
-                  border: Border.all(
-                    color: Color.fromRGBO(192, 57, 43, 1),
-                  )),
-              child: Center(
-                child: Text(
-                  'guardar',
-                  style: TextStyle(
-                    fontSize: 25,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              //width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Guardará los cambios realizados al mensaje de emergencia.',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
+            AyudaParrafo(
+              texto:
+                  '    Este mensaje solo será enviado a teléfonos móviles. El 112 o el 911 no pueden recibir mensajes SMS.',
+              fontweigth: FontWeight.w900,
+              fontsize: 30,
             ),
           ],
         ),

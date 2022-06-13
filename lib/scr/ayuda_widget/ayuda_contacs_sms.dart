@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:piproy/scr/ayuda_widget/ayuda_encabezado.dart';
 
 import '../widgets/parrafos_ayuda.dart';
 
-class AyudaIntroduccionPage extends StatelessWidget {
+class AyudaContactosSms extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _listaAyudaHome(context);
@@ -21,7 +20,7 @@ class AyudaIntroduccionPage extends StatelessWidget {
 
   List<Widget> _crearListaAyuda(BuildContext context) {
     List<Widget> lista = [];
-    //lista.addAll(ayudaEncabezado(context, 'Introducción'));
+    // lista.addAll(ayudaEncabezado(context, 'Mensaje de Emergencia'));
     List<Widget> lista2 = [
       Container(
         margin: EdgeInsets.only(left: 5),
@@ -34,45 +33,41 @@ class AyudaIntroduccionPage extends StatelessWidget {
             ),
             AyudaParrafo(
               texto:
-                  '     Vitalfon simplifica el uso del teléfono móvil o celular a usuarios con limitaciones visuales o digitales.',
+                  '     Elija aquí cuales son los contactos que recibirán el mensaje de emergencia; deben ser seleccionados de los contactos incluidos en el teléfono.',
             ),
             SizedBox(
               height: 10,
             ),
             AyudaParrafo(
               texto:
-                  '     El app permite que se configure de acuerdo a las necesidades del usuario final, simplificando las funciones originales del teléfono.',
+                  '    Seleccione "+agregar" y aparecerá la lista de todos los contactos que estén en su teléfono; seleccione los contactos que necesite.',
             ),
             SizedBox(
               height: 10,
             ),
             AyudaParrafo(
               texto:
-                  '     Esta concebido para trabajar en dos ambientes; el de configuración y el del usuario final.',
+                  '    El app vitalfon creará un grupo de contacto "Emergencia" con estos contactos. Este grupo podrá ser enviado a la pantalla de inicio pulsando la flecha azul.',
             ),
             SizedBox(
               height: 10,
             ),
             AyudaParrafo(
               texto:
-                  '     El acceso a la configuración se hace a través del ícono de la llave que aparece en la pagina de inicio.',
+                  '    Este mensaje solo será enviado a teléfonos móviles. El 112 o el 911 no pueden recibir mensajes SMS.',
             ),
-            Icon(Icons.build),
             SizedBox(
-              height: 13,
+              height: 10,
             ),
             AyudaParrafo(
               texto:
-                  '     El modo "Usuario" se centra en el uso del teléfono desde la pantalla de inicio.',
-            ),
-            SizedBox(
-              height: 40,
+                  '    Los números de teléfono (Móvil / celular) deberán estar salvados en su teléfono de la forma: +CódigoPaísNúmerodeteléfono; no usar 00 para reemplazar el +.',
+              fontsize: 30,
             ),
           ],
         ),
       ),
     ];
-
     lista.addAll(lista2);
     return lista;
   }

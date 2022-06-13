@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:piproy/scr/ayuda_widget/ayuda_des_habilitar.dart';
 
 import 'package:piproy/scr/ayuda_widget/ayuda_home.dart';
 import 'package:piproy/scr/ayuda_widget/ayuda_introduccion.dart';
+import 'package:piproy/scr/ayuda_widget/ayuda_llamada_sos.dart';
 
 import 'package:piproy/scr/widgets/boton_ayuda_dibujo.dart';
 import 'package:piproy/scr/widgets/boton_rojo.dart';
@@ -10,18 +12,19 @@ import 'package:piproy/scr/widgets/header_app.dart';
 
 import 'package:piproy/scr/widgets/inicio_boton.dart';
 
-import '../ayuda_widget/ayuda_api_seleccion.dart';
-import '../ayuda_widget/ayuda_apis_en_gropo.dart';
 import '../ayuda_widget/ayuda_apis_grupos.dart';
-import '../ayuda_widget/ayuda_boton_rojo.dart';
+
 import '../ayuda_widget/ayuda_configurar.dart';
-import '../ayuda_widget/ayuda_contacs_en_grupo.dart';
+
 import '../ayuda_widget/ayuda_contacs_grupos.dart';
-import '../ayuda_widget/ayuda_discado.dart';
+import '../ayuda_widget/ayuda_contacs_sms.dart';
+import '../ayuda_widget/ayuda_contactanos.dart';
+
+import '../ayuda_widget/ayuda_des_bloquear.dart';
 import '../ayuda_widget/ayuda_mensaje_emergencia.dart';
-import '../ayuda_widget/ayuda_opciones.dart';
+
 import '../ayuda_widget/ayuda_paleta.dart';
-import '../ayuda_widget/ayuda_seleccion_contactos.dart';
+import '../ayuda_widget/ayuda_salir.dart';
 
 class Ayuda extends StatelessWidget {
   final String pagina;
@@ -61,44 +64,35 @@ class Ayuda extends StatelessWidget {
       case 'Configuración':
         ayuda = AyudaConfigurarPage();
         break;
-
-      //// ** por arreglar ****///
-      case 'home':
-        ayuda = AyudaHome();
-        break;
-      case 'ApiGrupos':
-        ayuda = AyudaApisGrupos();
-        break;
-      case 'ApiPorGrupos':
-        ayuda = AyudaApisPorGrupos();
-        break;
-      case 'ContactoGrupos':
-        ayuda = AyudaContacsGrupos();
-        break;
-      case 'ContactosPorGrupo':
-        ayuda = AyudaContactosPorGrupos();
-        break;
-      case 'ContactoSeleccion':
-        ayuda = AyudaContactosSeleccion();
-        break;
-      case 'ApisSeleccion':
-        ayuda = AyudaApisSeleccion();
-        break;
-
-      case 'EmergenciaMensaje':
+      case 'Mensaje de emergencia':
         ayuda = AyudaMensajeEmergenciaPage();
         break;
-      case 'Paleta':
+      case 'Contactos SMS de SOS':
+        ayuda = AyudaContactosSms();
+        break;
+      case 'Llamada de emergencia':
+        ayuda = AyudaLlamadaSosPage();
+        break;
+      case 'Contactos':
+        ayuda = AyudaContacsGrupos();
+        break;
+      case 'Aplicaciones':
+        ayuda = AyudaApisGrupos();
+        break;
+      case 'Des/Habilitar Elementos':
+        ayuda = AyudaDessHabilitar();
+        break;
+      case 'Color de vitalfon':
         ayuda = AyudaPaletaPage();
         break;
-      case 'Opciones':
-        ayuda = AyudaOpcionesPage();
+      case 'Contactanos':
+        ayuda = AyudaContactanosPage();
         break;
-      case 'BotonRojo':
-        ayuda = AyudaBotonRojoPage();
+      case 'Des/Bloquear Configuración':
+        ayuda = AyudaDesBloquearPage();
         break;
-      case 'Discado':
-        ayuda = AyudaDiscadoPage();
+      case 'Salir de vitalfon':
+        ayuda = AyudaSalirPage();
         break;
     }
     return ayuda;

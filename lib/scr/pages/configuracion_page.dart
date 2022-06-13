@@ -247,8 +247,8 @@ class ConfiguracionPage extends StatelessWidget {
   void correoVitalfon() async {
     final String toEmail = 'vitalfon.app@gmail.com';
     final String asunto = 'Contactando a vitalfon';
-    final String contenido =
-        'Gracias por contactarnos. Nos gustaría leer tus comentarios:   ';
+    final String contenido = ' ';
+    //'Gracias por contactarnos. Nos gustaría leer tus comentarios:   ';
 
     final url = 'mailto:$toEmail?subject=$asunto&body=$contenido';
     final resp = await launch(url);

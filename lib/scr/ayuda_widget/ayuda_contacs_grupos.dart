@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:piproy/scr/ayuda_widget/ayuda_encabezado.dart';
 
+import '../widgets/parrafos_ayuda.dart';
+
 class AyudaContacsGrupos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,227 +21,116 @@ class AyudaContacsGrupos extends StatelessWidget {
 
   List<Widget> _crearListaAyuda(BuildContext context) {
     List<Widget> lista = [];
-    lista.addAll(ayudaEncabezado(context, 'Grupos de Contactos'));
+    // lista.addAll(ayudaEncabezado(context, 'Mensaje de Emergencia'));
     List<Widget> lista2 = [
       Container(
-        // height: 150,
-
         margin: EdgeInsets.only(left: 5),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-              decoration: BoxDecoration(
-                  color:
-                      /** es un contacto o grupo de contacto */
-                      Theme.of(context).backgroundColor,
-                  borderRadius: BorderRadius.circular(20.0),
-                  border: Border.all(
-                    color: Theme.of(context).primaryColor,
-                  )),
-              child: Center(
-                child: Text(
-                  'Todos',
-                  style: TextStyle(
-                    fontSize: 30,
-                  ),
-                ),
-              ),
+            SizedBox(
+              height: 30,
             ),
-            Container(
-              //width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Muestra todos los contactos del celular',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
+            AyudaParrafo(
+              texto:
+                  '     En esta sección puede organizar sus contactos, para que aparezcan en la pantalla de inicio, de forma individual o en grupos.',
             ),
-          ],
-        ),
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Divider(
-        height: 10,
-        color: Theme.of(context).primaryColor,
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Container(
-        margin: EdgeInsets.only(left: 5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 150,
-              margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-              decoration: BoxDecoration(
-                  color:
-                      /** es un contacto o grupo de contacto */
-                      Color.fromRGBO(192, 57, 43, 1),
-                  borderRadius: BorderRadius.circular(20.0),
-                  border: Border.all(
-                    color: Color.fromRGBO(192, 57, 43, 1),
-                  )),
-              child: Center(
-                child: Text(
-                  '+ agregar',
-                  style: TextStyle(
-                    fontSize: 25,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              //width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Permite definir un nuevo grupo de contactos. Una vez creado, toque sobre el nombre del grupo. Pasara a otra pantalla que le permitira agregar los contactos del grupo.',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
-            ),
-          ],
-        ),
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Divider(
-        height: 10,
-        color: Theme.of(context).primaryColor,
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Container(
-        // height: 150,
-
-        margin: EdgeInsets.only(left: 5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 50,
+            SizedBox(
               height: 50,
-              child: Icon(
-                Icons.arrow_back,
-                size: 50,
-                color: Colors.blue,
-              ),
             ),
-            Container(
-              //width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Permite copiar el grupo al menu principal, paara un acceso mas directo. Solo grupos creados por el usuario. ',
-                textAlign: TextAlign.justify,
+            Text('    CONTACTOS INDIVIDUALES:',
                 style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
+                    fontSize: 23,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold)),
+            SizedBox(
+              height: 10,
             ),
-          ],
-        ),
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Divider(
-        height: 10,
-        color: Theme.of(context).primaryColor,
-      ),
-      Container(
-        // height: 150,
-
-        margin: EdgeInsets.only(left: 5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 50,
-              height: 50,
-              child: Icon(
-                Icons.close,
-                size: 50,
-                color: Colors.red,
-              ),
-            ),
-            Container(
-              //width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Permite eliminar un grupo',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
-            ),
-          ],
-        ),
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Divider(
-        height: 10,
-        color: Theme.of(context).primaryColor,
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Container(
-        margin: EdgeInsets.only(left: 5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              // width: 150,
-              // margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-
-              child: Center(
-                child: Text(
-                  'Cambiar nombre del grupo',
-                  style: TextStyle(
-                      fontSize: 25, color: Theme.of(context).primaryColor),
-                ),
-              ),
+            AyudaParrafo(
+              texto:
+                  '    Todos los contactos disponibles en el teléfono, se agruparan en el grupo de contactos "TODOS", en esta sección de "Contactos".',
             ),
             SizedBox(
               height: 10,
             ),
-            Container(
-              //width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Presione por unos instantes sobre el nombre del grupo. Se abrirá una pequeña pantalla que le permitirá editarlo.',
-                textAlign: TextAlign.justify,
+            AyudaParrafo(
+              texto:
+                  '    Seleccione el grupo de contactos "TODOS"; busque los contactos que quiere tener en la pagina de inicio y presione la flecha azul.',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            AyudaParrafo(
+              texto:
+                  '    El contacto aparecerá en la pagina de inicio con una o todas de las siguientes opciones: Discado rápido; WhatsApp; SMS; detalles del contacto',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            AyudaParrafo(
+              texto:
+                  '    Para quitar un contacto de la pantalla de inicio presione la "x" roja',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            AyudaParrafo(
+              texto:
+                  '    Los números de teléfono (Móvil / celular) deberán estar salvados en su teléfono de la forma: +CódigoPaisNumerodeteléfono; no usar 00 para reemplazar el +.',
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            Text('    CONTACTOS EN GRUPOS:',
                 style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
+                    fontSize: 23,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold)),
+            SizedBox(
+              height: 10,
+            ),
+            AyudaParrafo(
+              texto:
+                  '    En la pantalla de contactos seleccione +agregar ; asigne el nombre al nuevo grupo de contactos; y seleccione si para crear el grupo',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            AyudaParrafo(
+              texto:
+                  '    Seleccione el nuevo grupo y luego +agregar; busque el primer contacto; seleccione y pulse "Atrás"; repita para todos los contactos que quiera incluir en el grupo.',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            AyudaParrafo(
+              texto:
+                  '    Pulse la flecha azul del grupo para mover a la pantalla de inicio.',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            AyudaParrafo(
+              texto:
+                  '    Cada contacto del grupo contará con una o todas de las siguientes opciones: Discado rápido; WhatsApp; SMS; detalles del contacto',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            AyudaParrafo(
+              texto:
+                  '    Para quitar un grupo de contactos de la pantalla de inicio presione la "x" roja',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            AyudaParrafo(
+              texto:
+                  '    Los números de teléfono (Móvil / celular) deberán estar salvados en su teléfono de la forma: +CódigoPaisNumerodeteléfono; no usar 00 para reemplazar el +.',
             ),
           ],
         ),
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Divider(
-        height: 10,
-        color: Theme.of(context).primaryColor,
-      ),
-      SizedBox(
-        height: 10,
       ),
     ];
     lista.addAll(lista2);

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../widgets/parrafos_ayuda.dart';
 
-class AyudaConfigurarPage extends StatelessWidget {
+class AyudaLlamadaSosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _listaAyudaHome(context);
@@ -20,7 +20,7 @@ class AyudaConfigurarPage extends StatelessWidget {
 
   List<Widget> _crearListaAyuda(BuildContext context) {
     List<Widget> lista = [];
-    // lista.addAll(ayudaEncabezado(context, 'Configuración de vitalfon'));
+    // lista.addAll(ayudaEncabezado(context, 'Mensaje de Emergencia'));
     List<Widget> lista2 = [
       Container(
         margin: EdgeInsets.only(left: 5),
@@ -33,21 +33,19 @@ class AyudaConfigurarPage extends StatelessWidget {
             ),
             AyudaParrafo(
               texto:
-                  '     En esta sección están disponibles todas las opciones para configurar el app de acuerdo a las necesidades del usuario final.',
+                  '     Llamar directamente a un contacto después del envío del mensaje de ayuda.',
             ),
             SizedBox(
               height: 10,
             ),
             AyudaParrafo(
-              texto:
-                  '    Comience configurando el mensaje de emergencia y luego siga el orden de las secciones que aparecen en Configuración.',
+              texto: '    ',
             ),
             SizedBox(
               height: 10,
             ),
             AyudaParrafo(
-              texto:
-                  '    Una vez concluida la configuración del app, deberá bloquear la configuración para evitar que el usuario final la modifique accidentalmente.',
+              texto: '    ',
               fontweigth: FontWeight.w900,
               fontsize: 30,
             ),
@@ -55,7 +53,6 @@ class AyudaConfigurarPage extends StatelessWidget {
         ),
       ),
     ];
-
     lista.addAll(lista2);
     return lista;
   }

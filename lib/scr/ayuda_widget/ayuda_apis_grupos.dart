@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:piproy/scr/ayuda_widget/ayuda_encabezado.dart';
+
+import '../widgets/parrafos_ayuda.dart';
 
 class AyudaApisGrupos extends StatelessWidget {
   @override
@@ -19,230 +20,90 @@ class AyudaApisGrupos extends StatelessWidget {
 
   List<Widget> _crearListaAyuda(BuildContext context) {
     List<Widget> lista = [];
-    lista.addAll(ayudaEncabezado(context, 'Grupos de Aplicaciones'));
     List<Widget> lista2 = [
       Container(
-        // height: 150,
-
         margin: EdgeInsets.only(left: 5),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-              decoration: BoxDecoration(
-                  color:
-                      /** es un contacto o grupo de contacto */
-                      Theme.of(context).backgroundColor,
-                  borderRadius: BorderRadius.circular(20.0),
-                  border: Border.all(
-                    color: Theme.of(context).primaryColor,
-                  )),
-              child: Center(
-                child: Text(
-                  'Todas',
-                  style: TextStyle(
-                    fontSize: 30,
-                  ),
-                ),
-              ),
+            SizedBox(
+              height: 30,
             ),
-            Container(
-              //width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Muestra todas las aplicaciones del celular',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
-            ),
-          ],
-        ),
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Divider(
-        height: 10,
-        color: Theme.of(context).primaryColor,
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Container(
-        margin: EdgeInsets.only(left: 5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 150,
-              margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-              decoration: BoxDecoration(
-                  color:
-                      /** es un contacto o grupo de contacto */
-                      Color.fromRGBO(192, 57, 43, 1),
-                  borderRadius: BorderRadius.circular(20.0),
-                  border: Border.all(
-                    color: Color.fromRGBO(192, 57, 43, 1),
-                  )),
-              child: Center(
-                child: Text(
-                  '+ agregar',
-                  style: TextStyle(
-                    fontSize: 25,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              //width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Permite definir un nuevo grupo de aplicaciones. Una vez creado, toque sobre el nombre del grupo. Pasara a otra pantalla que le permitira agregar las aplicaciones al grupo.',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
-            ),
-          ],
-        ),
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Divider(
-        height: 10,
-        color: Theme.of(context).primaryColor,
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Container(
-        // height: 150,
-
-        margin: EdgeInsets.only(left: 5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 50,
-              height: 50,
-              child: Icon(
-                Icons.arrow_back,
-                size: 50,
-                color: Colors.blue,
-              ),
-            ),
-            Container(
-              //width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Permite copiar el grupo al menu principal, para un acceso mas directo. Solo grupos creados por el usuario. ',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
-            ),
-          ],
-        ),
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Divider(
-        height: 10,
-        color: Theme.of(context).primaryColor,
-      ),
-      Container(
-        // height: 150,
-
-        margin: EdgeInsets.only(left: 5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 50,
-              height: 50,
-              child: Icon(
-                Icons.close,
-                size: 50,
-                color: Colors.red,
-              ),
-            ),
-            Container(
-              //width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Permite eliminar un grupo',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
-            ),
-          ],
-        ),
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Divider(
-        height: 10,
-        color: Theme.of(context).primaryColor,
-      ),
-      SizedBox(
-        height: 10,
-      ),
-      Container(
-        margin: EdgeInsets.only(left: 5),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              // width: 150,
-              // margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-
-              child: Center(
-                child: Text(
-                  'Cambiar nombre del grupo',
-                  style: TextStyle(
-                    fontSize: 25,
-                  ),
-                ),
-              ),
+            AyudaParrafo(
+              texto:
+                  '     En esta sección puede seleccionar las apps que quiera que aparezcan en la página de inicio, seleccionelas directamente del grupo "TODAS"',
             ),
             SizedBox(
               height: 10,
             ),
-            Container(
-              //width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Presione por unos instantes sobre el nombre del grupo. Se abrirá una pequeña pantalla que le permitirá editarlo.',
-                textAlign: TextAlign.justify,
+            AyudaParrafo(
+              texto:
+                  '     Las puede seleccionar individualmente u organizarlas por grupos',
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            Text('    APP INDIVIDUALES:',
                 style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
+                    fontSize: 23,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold)),
+            SizedBox(
+              height: 10,
+            ),
+            AyudaParrafo(
+              texto:
+                  '    Pulse la flecha azul del app para mover un app a la pantalla de inicio.',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            AyudaParrafo(
+              texto:
+                  '    Para quitar un app de la pantalla de inicio presione la "x" roja',
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            Text('    APPS  EN  GRUPOS:',
+                style: TextStyle(
+                    fontSize: 23,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold)),
+            SizedBox(
+              height: 10,
+            ),
+            AyudaParrafo(
+              texto:
+                  '    En la pantalla de aplicaciones presione "+agregar"; asigne el nombre al nuevo grupo de apps; y presione "Si" para crear el grupo',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            AyudaParrafo(
+              texto:
+                  '    Seleccione el nuevo grupo y luego "+agregar"; busque y seleccione las apps que quiere incluir y presione "+agregar"',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            AyudaParrafo(
+              texto:
+                  '    Pulse la flecha azul del nuevo grupo para moverlo a la pantalla de inicio.',
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            AyudaParrafo(
+              texto:
+                  '    Para quitar el grupo de apps de la pantalla de inicio presione la "x" roja',
             ),
           ],
         ),
       ),
-      SizedBox(
-        height: 10,
-      ),
-      Divider(
-        height: 10,
-        color: Theme.of(context).primaryColor,
-      ),
-      SizedBox(
-        height: 10,
-      ),
     ];
+
     lista.addAll(lista2);
     return lista;
   }

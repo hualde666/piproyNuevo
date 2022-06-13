@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:piproy/scr/ayuda_widget/ayuda_encabezado.dart';
+
+import '../widgets/parrafos_ayuda.dart';
 
 class AyudaPaletaPage extends StatelessWidget {
   @override
@@ -19,11 +20,8 @@ class AyudaPaletaPage extends StatelessWidget {
 
   List<Widget> _crearListaAyuda(BuildContext context) {
     List<Widget> lista = [];
-    lista.addAll(ayudaEncabezado(context, 'Color de vitalfon'));
+    // lista.addAll(ayudaEncabezado(context, 'Mensaje de Emergencia'));
     List<Widget> lista2 = [
-      SizedBox(
-        height: 10,
-      ),
       Container(
         margin: EdgeInsets.only(left: 5),
         child: Column(
@@ -31,33 +29,21 @@ class AyudaPaletaPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: 10,
+              height: 30,
             ),
-            Container(
-              //width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Selección de Color.',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
+            AyudaParrafo(
+              texto:
+                  '     Aquí puede seleccionar la apariencia y combinación de colores del app.',
             ),
             SizedBox(
               height: 10,
             ),
-            Container(
-              //width: double.infinity,
-              margin: EdgeInsets.only(left: 6, right: 6, top: 3),
-              child: Text(
-                'Solo tiene que tocar una de las opciones y el color cambiará automaticamente.',
-                textAlign: TextAlign.justify,
-                style: TextStyle(
-                    fontSize: 25, color: Theme.of(context).primaryColor),
-              ),
+            AyudaParrafo(
+              texto:
+                  '    Vitalfon ofrece 5 tipos de combinaciones; dos minimalista; otra de alto contraste; otra con fondo verde y otra con fondo azul. ',
             ),
             SizedBox(
-              height: 50,
+              height: 10,
             ),
           ],
         ),

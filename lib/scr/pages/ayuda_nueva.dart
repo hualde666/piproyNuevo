@@ -62,7 +62,7 @@ class AyudaNuevaPage extends StatelessWidget {
           ItemConfig(
             icon: Icons.message,
             texto: 'Redactar mensaje de emergencia',
-            onPress: EmergenciaMensaje(),
+            onPress: Ayuda(pagina: 'Mensaje de emergencia'),
           ),
           Divider(
             height: 10,
@@ -71,7 +71,7 @@ class AyudaNuevaPage extends StatelessWidget {
           ItemConfig(
             icon: Icons.contact_phone,
             texto: 'Contactos envío mensaje de emergencia',
-            onPress: EmergenciaMensaje(),
+            onPress: Ayuda(pagina: 'Contactos SMS de SOS'),
           ),
           Divider(
             height: 10,
@@ -80,7 +80,7 @@ class AyudaNuevaPage extends StatelessWidget {
           ItemConfig(
             icon: Icons.phone_forwarded,
             texto: 'Contacto llamada de emergencia',
-            onPress: (EmergenciaMensaje()),
+            onPress: (Ayuda(pagina: 'Llamada de emergencia')),
           ),
           Divider(
             height: 10,
@@ -89,7 +89,7 @@ class AyudaNuevaPage extends StatelessWidget {
           ItemConfig(
             icon: Icons.groups,
             texto: 'Contactos',
-            onPress: ContactsGruposPage(),
+            onPress: Ayuda(pagina: 'Contactos'),
           ),
           Divider(
             height: 10,
@@ -98,7 +98,7 @@ class AyudaNuevaPage extends StatelessWidget {
           ItemConfig(
             icon: Icons.app_registration,
             texto: 'Aplicaciones',
-            onPress: ApiGruposPage(),
+            onPress: Ayuda(pagina: 'Aplicaciones'),
           ),
           Divider(
             height: 10,
@@ -107,7 +107,7 @@ class AyudaNuevaPage extends StatelessWidget {
           ItemConfig(
             icon: Icons.engineering,
             texto: 'Habilitar o Deshabilitar Elementos',
-            onPress: OpcionesPage(),
+            onPress: Ayuda(pagina: 'Des/Habilitar Elementos'),
           ),
           Divider(
             height: 10,
@@ -116,7 +116,7 @@ class AyudaNuevaPage extends StatelessWidget {
           ItemConfig(
             icon: Icons.palette,
             texto: 'Color de vitalfon',
-            onPress: PaletaPage(),
+            onPress: Ayuda(pagina: 'Color de vitalfon'),
           ),
           Divider(
             height: 10,
@@ -125,7 +125,7 @@ class AyudaNuevaPage extends StatelessWidget {
           ItemConfig(
             icon: Icons.email,
             texto: 'Contactanos',
-            onPress: PaletaPage(),
+            onPress: Ayuda(pagina: 'Contactanos'),
           ),
           Divider(
             height: 10,
@@ -134,7 +134,7 @@ class AyudaNuevaPage extends StatelessWidget {
           ItemConfig(
             icon: Icons.lock_open,
             texto: 'Bloquear / Desbloquear Configuración',
-            onPress: PaletaPage(),
+            onPress: Ayuda(pagina: 'Des/Bloquear Configuración'),
           ),
           Divider(
             height: 10,
@@ -143,7 +143,7 @@ class AyudaNuevaPage extends StatelessWidget {
           ItemConfig(
             icon: Icons.logout,
             texto: 'Salir de vitalfon',
-            onPress: PaletaPage(),
+            onPress: Ayuda(pagina: 'Salir de vitalfon'),
           ),
         ]),
       ),
