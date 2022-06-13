@@ -32,14 +32,14 @@ Widget botonHomeHeader(BuildContext context, String pagina) {
               size: icon,
               color: pref.paleta == '4' || pref.paleta == '5'
                   ? Theme.of(context).primaryColor
-                  : Colors.white70),
+                  : Colors.white),
           Text(
             'INICIO',
             style: TextStyle(
                 fontSize: font,
                 color: pref.paleta == '4' || pref.paleta == '5'
                     ? Theme.of(context).primaryColor
-                    : Colors.white70),
+                    : Colors.white),
           )
         ],
       ),

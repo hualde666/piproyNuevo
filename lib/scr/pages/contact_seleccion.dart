@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter/services.dart';
 
 import 'package:piproy/scr/models/api_tipos.dart';
 import 'package:piproy/scr/models/contactos_modelo.dart';
@@ -18,20 +17,21 @@ class SelectContactsPage extends StatefulWidget {
 class _SelectContactsPageState extends State<SelectContactsPage> {
   List<ContactoDatos> listaGrupo = [];
   bool abilitarBusqueda = false;
-  bool hayBusqueda = false;
+  bool hayBusqueda = true;
   bool buscar = false;
   TextEditingController _searchController = TextEditingController();
   List<ContactoDatos> listaContactosFiltro;
   @override
   void initState() {
     super.initState();
-
+    //obtenerListaGrupo();
     _searchController.addListener(filtrarContactos);
   }
 
   @override
   void dispose() {
     _searchController.dispose();
+
     super.dispose();
   }
 
@@ -52,6 +52,21 @@ class _SelectContactsPageState extends State<SelectContactsPage> {
     }
   }
 
+  Future<List<ContactoDatos>> obtenerListaGrupo() async {
+    final apiProvider = Provider.of<AplicacionesProvider>(context);
+    if (_searchController.text.isNotEmpty) {
+      return listaContactosFiltro;
+    } else {
+      List<ContactoDatos> lista =
+          await apiProvider.obtenerListaContactosGrupo(context, 'Todos');
+      listaGrupo = [];
+      listaGrupo.addAll(lista);
+      // abilitarBusqueda = true;
+      if (listaGrupo.length > 0) hayBusqueda = true;
+      return listaGrupo;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final apiProvider = Provider.of<AplicacionesProvider>(context);
@@ -62,20 +77,6 @@ class _SelectContactsPageState extends State<SelectContactsPage> {
 
     // bool hayBusqueda = _searchController.text.isNotEmpty;
 
-    Future<List<ContactoDatos>> obtenerListaGrupo() async {
-      if (_searchController.text.isNotEmpty) {
-        return listaContactosFiltro;
-      } else {
-        List<ContactoDatos> lista =
-            await apiProvider.obtenerListaContactosGrupo(context, 'Todos');
-        listaGrupo = [];
-        listaGrupo.addAll(lista);
-        // abilitarBusqueda = true;
-
-        return listaGrupo;
-      }
-    }
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).requestFocus(new FocusNode());
@@ -85,7 +86,7 @@ class _SelectContactsPageState extends State<SelectContactsPage> {
               appBar: PreferredSize(
                   preferredSize:
                       Size.fromHeight(250.0), // here the desired height
-                  child: busqueda(context)),
+                  child: busqueda(context, hayBusqueda)),
               resizeToAvoidBottomInset: false,
               body: FutureBuilder(
                   future: obtenerListaGrupo(),
@@ -102,28 +103,43 @@ class _SelectContactsPageState extends State<SelectContactsPage> {
                                 contactoSelec: snapshot.data[i],
                                 apiProvider: apiProvider,
                                 grupo: grupo));
+                        if (listaContact.length == 0) {
+                          hayBusqueda = false;
 
-                        return
-                            // GestureDetector(
-                            //   onTap: () {
-                            //     FocusScope.of(context)
-                            //         .requestFocus(new FocusNode());
-                            //   },
-                            //   child:
-                            Container(
-                          padding: EdgeInsets.only(bottom: 55),
-                          child: ListView.builder(
-                              padding: EdgeInsets.only(
-                                bottom: 220,
-                              ),
-                              itemCount: snapshot.data.length,
-                              itemBuilder: (context, i) {
-                                return listaContact[i];
-                              }),
-                          //),
-                        );
+                          return Container(
+                            child: Center(
+                                child: Text('Debes definir tus contactos',
+                                    style: TextStyle(color: Colors.red))),
+                          );
+                        } else {
+                          return Container(
+                            padding: EdgeInsets.only(bottom: 55),
+                            child: ListView.builder(
+                                padding: EdgeInsets.only(
+                                  bottom: 220,
+                                ),
+                                itemCount: snapshot.data.length,
+                                itemBuilder: (context, i) {
+                                  return listaContact[i];
+                                }),
+                            //),
+                          );
+                        }
+
+                        // GestureDetector(
+                        //   onTap: () {
+                        //     FocusScope.of(context)
+                        //         .requestFocus(new FocusNode());
+                        //   },
+                        //   child:
+
                       } else {
-                        return Container();
+                        hayBusqueda = false;
+                        return Container(
+                          child: Center(
+                              child: Text('Debes definir tus contactos',
+                                  style: TextStyle(color: Colors.red))),
+                        );
                       }
                     }
                   }),
@@ -143,7 +159,7 @@ class _SelectContactsPageState extends State<SelectContactsPage> {
     );
   }
 
-  Widget busqueda(BuildContext context) {
+  Widget busqueda(BuildContext context, bool hayBusqueda) {
     return
         //AppBar(
         // backgroundColor: Color.fromRGBO(55, 57, 84, 1.0),
@@ -157,63 +173,69 @@ class _SelectContactsPageState extends State<SelectContactsPage> {
               // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 tresBotonesHeader(context, true, 'ContactoSeleccion'),
-                Text(
-                  'Seleccion de Contactos',
-                  style: TextStyle(
-                      color: Theme.of(context).primaryColor, fontSize: 25),
-                ),
-                GestureDetector(
-                    onTap: () {
-                      FocusScope.of(context).requestFocus(new FocusNode());
-                    },
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 7,
-                      ),
-                      child: TextField(
-                        // enabled: abilitarBusqueda,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 25.0, color: Colors.white54, height: 1.0),
-                        keyboardType: TextInputType.name,
-                        // inputFormatters: [
-                        //   FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")),
-                        // ],
-                        controller: _searchController,
-                        // autofocus: true,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              //borderSide: BorderSide(color: Colors.amber),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(25.0))),
-                          labelStyle:
-                              TextStyle(color: Colors.white38, fontSize: 20),
-                          labelText: 'Buscar Contacto :',
-                          suffixIcon: _searchController.text.isNotEmpty
-                              ? IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      _searchController.clear();
-                                      buscar = true;
-                                    });
-                                  },
-                                  icon: Icon(
-                                    Icons.clear,
-                                    color: Colors.white,
+                if (hayBusqueda)
+                  Text(
+                    'Seleccion de Contactos',
+                    style: TextStyle(
+                        color: Theme.of(context).primaryColor, fontSize: 25),
+                  ),
+                if (hayBusqueda)
+                  GestureDetector(
+                      onTap: () {
+                        FocusScope.of(context).requestFocus(new FocusNode());
+                      },
+                      child: Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 7, vertical: 7),
+                        child: TextField(
+                          // enabled: abilitarBusqueda,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 25.0,
+                              color: Theme.of(context).primaryColor,
+                              height: 1.0),
+                          keyboardType: TextInputType.name,
+                          // inputFormatters: [
+                          //   FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")),
+                          // ],
+                          controller: _searchController,
+                          // autofocus: true,
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(25.0))),
+                            labelStyle: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 20),
+                            labelText: 'Buscar Contacto :',
+                            suffixIcon: _searchController.text.isNotEmpty
+                                ? IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        _searchController.clear();
+                                        buscar = true;
+                                      });
+                                    },
+                                    icon: Icon(
+                                      Icons.clear,
+                                      color: Theme.of(context).primaryColor,
+                                      size: 30,
+                                    ))
+                                : Icon(
+                                    Icons.search,
+                                    color: Theme.of(context).primaryColor,
                                     size: 30,
-                                  ))
-                              : Icon(
-                                  Icons.search,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(25.0))),
+                                  ),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Theme.of(context).primaryColor),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(25.0))),
+                          ),
                         ),
-                      ),
-                    )),
+                      )),
               ],
             ));
   }
@@ -247,14 +269,20 @@ class _ContactoState extends State<Contacto> {
             color: widget.apiProvider.categoryContact[widget.grupo]
                     .contains(widget.contactoSelec)
                 ? Theme.of(context).backgroundColor
-                : Colors.grey[700],
+                : Theme.of(context)
+                    .backgroundColor
+                    .withOpacity(0.3), //Colors.grey[700],
             borderRadius: BorderRadius.circular(20.0),
             border: Border.all(color: Theme.of(context).primaryColor)),
         child: Center(
             child: Text(widget.contactoSelec.nombre,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: Theme.of(context).primaryColor, fontSize: 30))),
+                    color: widget.apiProvider.categoryContact[widget.grupo]
+                            .contains(widget.contactoSelec)
+                        ? Theme.of(context).primaryColor
+                        : Theme.of(context).primaryColor.withOpacity(0.3),
+                    fontSize: 30))),
       ),
       onTap: () {
         if (widget.apiProvider.categoryContact[widget.grupo]

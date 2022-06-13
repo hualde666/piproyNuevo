@@ -36,14 +36,14 @@ Widget botonBackHeader(BuildContext context, String pagina) {
               size: icon,
               color: pref.paleta == '4' || pref.paleta == '5'
                   ? Theme.of(context).primaryColor
-                  : Colors.white70),
+                  : Colors.white),
           Text(
             'ATRAS',
             style: TextStyle(
                 fontSize: font,
                 color: pref.paleta == '4' || pref.paleta == '5'
                     ? Theme.of(context).primaryColor
-                    : Colors.white70),
+                    : Colors.white),
           ) //color: Colors.red),
         ],
       ),

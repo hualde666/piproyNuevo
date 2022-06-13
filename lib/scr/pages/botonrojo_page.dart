@@ -12,9 +12,6 @@ import 'package:provider/provider.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:audioplayers/audioplayers.dart';
-
-import '../funciones/url_funciones.dart';
 import '../models/api_tipos.dart';
 import '../providers/db_provider.dart';
 

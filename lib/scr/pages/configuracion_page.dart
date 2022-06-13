@@ -7,11 +7,12 @@ import 'package:piproy/scr/models/api_tipos.dart';
 import 'package:piproy/scr/pages/api_grupos.dart';
 import 'package:piproy/scr/pages/conta_grupos.dart';
 import 'package:piproy/scr/pages/contacts_por_grupo.dart';
+import 'package:piproy/scr/pages/desbloqueo.dart';
 import 'package:piproy/scr/pages/mensaje_emergencia.dart';
 
 import 'package:piproy/scr/pages/opciones_page.dart';
 import 'package:piproy/scr/pages/paletta_colores.dart';
-import 'package:piproy/scr/pages/presentacion_page.dart';
+
 import 'package:piproy/scr/pages/select_ayuda.dart';
 import 'package:piproy/scr/providers/aplicaciones_provider.dart';
 import 'package:piproy/scr/providers/db_provider.dart';
@@ -28,7 +29,9 @@ class ConfiguracionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pref = Provider.of<Preferencias>(context);
-    final colorBloqueo = pref.paleta != '5' ? Colors.white38 : Colors.black26;
+    final colorBloqueo = pref.paleta != '2' && pref.paleta != '5'
+        ? Colors.white38
+        : Colors.black26;
     return SafeArea(
       child: Scaffold(
         appBar: headerApp(
@@ -173,15 +176,15 @@ class ConfiguracionPage extends StatelessWidget {
                 )),
             onTap: correoVitalfon,
           ),
-          Divider(
-            height: 10,
-            color: Theme.of(context).primaryColor,
-          ),
-          ItemConfig(
-            icon: Icons.play_circle,
-            texto: 'Video Presentacion',
-            onPress: VideoPlayerScreen(),
-          ),
+          // Divider(
+          //   height: 10,
+          //   color: Theme.of(context).primaryColor,
+          // ),
+          // ItemConfig(
+          //   icon: Icons.play_circle,
+          //   texto: 'Video Presentacion',
+          //   onPress: VideoPlayerScreen(),
+          // ),
           Divider(
             height: 10,
             color: Theme.of(context).primaryColor,
@@ -201,7 +204,14 @@ class ConfiguracionPage extends StatelessWidget {
                   color: Theme.of(context).primaryColor,
                 )),
             onTap: () {
-              pref.modoConfig = !pref.modoConfig;
+              if (!pref.modoConfig) {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Desbloqueo()));
+                // onPress();
+
+              } else {
+                pref.modoConfig = !pref.modoConfig;
+              }
             },
           ),
           Divider(
@@ -255,7 +265,9 @@ class ItemConfig extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pref = Provider.of<Preferencias>(context);
-    final colorBloqueo = pref.paleta != '5' ? Colors.white38 : Colors.black26;
+    final colorBloqueo = pref.paleta != '2' && pref.paleta != '5'
+        ? Colors.white38
+        : Colors.black26;
     return ListTile(
       leading: Icon(
         icon,

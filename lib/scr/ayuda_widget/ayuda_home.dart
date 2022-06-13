@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:piproy/scr/widgets/boton_ayuda_dibujo.dart';
 import 'package:piproy/scr/widgets/boton_rojo_dibujo.dart';
-import 'package:piproy/scr/widgets/boton_salida.dart';
 import 'package:piproy/scr/widgets/encabezado_icon.dart';
 
 class AyudaHome extends StatelessWidget {

@@ -128,7 +128,7 @@ class _Home2PageState extends State<Home2Page> {
                 fontSize: 40.0,
                 color: pref.paleta == '4' || pref.paleta == '5'
                     ? Theme.of(context).primaryColor
-                    : Colors.white70),
+                    : Colors.white),
           ),
           60,
           'apigrupos',
@@ -186,11 +186,14 @@ encabezadoApp(BuildContext context) {
   final menuHorizontal = pref.menuHorizontal;
 
   return Container(
-    height: pref.menuHorizontal ? 275 : 200,
+    height: pref.menuHorizontal ? 276 : 200,
     //   padding: EdgeInsets.only(left: 5, right: 5),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
+        SizedBox(
+          height: 4,
+        ),
         BotonesEncabezado(),
         SizedBox(
           height: 5,

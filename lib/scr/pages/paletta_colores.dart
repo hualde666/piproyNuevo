@@ -8,8 +8,7 @@ class PaletaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> paleta = [
-      colores(context, Color.fromARGB(255, 2, 84, 131),
-          Color.fromARGB(255, 3, 51, 90), Colors.white, 1),
+      colores(context, Colors.white, Colors.white, Colors.black, 5),
       SizedBox(
         height: 5,
       ),
@@ -23,12 +22,13 @@ class PaletaPage extends StatelessWidget {
       SizedBox(
         height: 5,
       ),
-      colores(context, Colors.black, Colors.black,
-          Color.fromARGB(255, 8, 194, 240), 4),
+      colores(context, Color.fromARGB(255, 2, 84, 131),
+          Color.fromARGB(255, 3, 51, 90), Colors.white, 1),
       SizedBox(
         height: 5,
       ),
-      colores(context, Colors.white, Colors.white, Colors.black, 5),
+      colores(context, Colors.black, Colors.black,
+          Color.fromARGB(255, 8, 194, 240), 4),
       SizedBox(
         height: 5,
       ),
@@ -67,16 +67,16 @@ class PaletaPage extends StatelessWidget {
             // borderRadius: BorderRadius.circular(15.0),
             border: Border.all(
                 color: usuarioProvider.paleta == paleta.toString()
-                    ? Colors.white
-                    : Colors.white54,
+                    ? Colors.amber
+                    : Colors.black12,
                 width:
                     usuarioProvider.paleta == paleta.toString() ? 3.0 : 1.0)),
-        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-        height: 100,
+        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        height: 80,
         // color: fondo,
         child: Center(
           child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+              margin: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
               decoration: BoxDecoration(
                   color: elemento,
                   borderRadius: BorderRadius.circular(15.0),
