@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:piproy/scr/ayuda_widget/ayuda_home.dart';
+import 'package:piproy/scr/ayuda_widget/ayuda_introduccion.dart';
 
 import 'package:piproy/scr/widgets/boton_ayuda_dibujo.dart';
 import 'package:piproy/scr/widgets/boton_rojo.dart';
@@ -30,7 +31,16 @@ class Ayuda extends StatelessWidget {
     // final String pagina = ModalRoute.of(context).settings.arguments;
     return SafeArea(
       child: Scaffold(
-        appBar: headerApp(context, 'Manual', Text(''), 0.0, true, ''),
+        appBar: headerApp(
+            context,
+            'Ayuda',
+            Text(
+              pagina,
+              style: TextStyle(fontSize: 25),
+            ),
+            30.0,
+            true,
+            pagina),
         // backgroundColor: Colors.white,
         body: contenido(pagina),
       ),
@@ -45,6 +55,14 @@ class Ayuda extends StatelessWidget {
       style: TextStyle(color: Colors.red),
     )));
     switch (pagina) {
+      case 'Introducción':
+        ayuda = AyudaIntroduccionPage();
+        break;
+      case 'Configuración':
+        ayuda = AyudaConfigurarPage();
+        break;
+
+      //// ** por arreglar ****///
       case 'home':
         ayuda = AyudaHome();
         break;
@@ -66,9 +84,7 @@ class Ayuda extends StatelessWidget {
       case 'ApisSeleccion':
         ayuda = AyudaApisSeleccion();
         break;
-      case 'Configurar':
-        ayuda = AyudaConfigurarPage();
-        break;
+
       case 'EmergenciaMensaje':
         ayuda = AyudaMensajeEmergenciaPage();
         break;

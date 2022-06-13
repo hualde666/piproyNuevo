@@ -12,7 +12,7 @@ class RelojModel {
   List dias = [
     'Lunes',
     'Martes',
-    'Miercoles',
+    'Miércoles',
     'Jueves',
     'Viernes',
     'Sábado',

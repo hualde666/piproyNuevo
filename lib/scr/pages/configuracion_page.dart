@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 
 import 'package:piproy/scr/models/api_tipos.dart';
 import 'package:piproy/scr/pages/api_grupos.dart';
+import 'package:piproy/scr/pages/ayuda_nueva.dart';
 import 'package:piproy/scr/pages/conta_grupos.dart';
 import 'package:piproy/scr/pages/contacts_por_grupo.dart';
 import 'package:piproy/scr/pages/desbloqueo.dart';
@@ -49,8 +50,8 @@ class ConfiguracionPage extends StatelessWidget {
           ),
           ItemConfig(
             icon: Icons.help,
-            texto: 'Manual',
-            onPress: SelecionAyuda(),
+            texto: 'Ayuda',
+            onPress: AyudaNuevaPage(),
           ),
           Divider(
             height: 10,

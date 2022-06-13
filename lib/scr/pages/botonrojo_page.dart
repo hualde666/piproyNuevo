@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../funciones/url_funciones.dart';
 import '../models/api_tipos.dart';
 import '../providers/db_provider.dart';
 
@@ -141,8 +142,9 @@ conListaEmergenia(BuildContext context, List<ContactoDatos> listaE) {
                 // final AudioCache player = new AudioCache();
                 //player.play('audio_emergencia.mpeg');
                 mandarSMS(listaE);
-                Navigator.pop(context);
-                // llamar('584264183297');
+                //llamar('+58 4264183297');
+                // Navigator.pop(context);
+
                 // Navigator.push(
                 //     context,
                 //     MaterialPageRoute(
