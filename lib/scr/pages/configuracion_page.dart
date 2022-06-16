@@ -14,7 +14,6 @@ import 'package:piproy/scr/pages/mensaje_emergencia.dart';
 import 'package:piproy/scr/pages/opciones_page.dart';
 import 'package:piproy/scr/pages/paletta_colores.dart';
 
-import 'package:piproy/scr/pages/select_ayuda.dart';
 import 'package:piproy/scr/providers/aplicaciones_provider.dart';
 import 'package:piproy/scr/providers/db_provider.dart';
 

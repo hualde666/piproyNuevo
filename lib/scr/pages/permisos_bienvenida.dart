@@ -40,7 +40,7 @@ class BienvenidaPage extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                        '    Manten a tus mayores conectados desde su movil. Podrán enviar mensajes de emergencia indicando su localzación.',
+                        '    Mantén conectados a tus mayores o a cualquier persona con limitaciones visuales o digitales. No mas miedo al teléfono móvil o celular.',
                         textAlign: TextAlign.justify,
                         style: TextStyle(
                             fontStyle: FontStyle.italic,
@@ -51,7 +51,7 @@ class BienvenidaPage extends StatelessWidget {
                         height: 10,
                       ),
                       Text(
-                        '    Este app está pensado para personas con limitación visual, digitales u otras a las que resulte difícil el uso de celulares.',
+                        '    El usuario podrá enviar mensajes de emergencia indicando su localización.',
                         textAlign: TextAlign.justify,
                         style: TextStyle(
                             fontStyle: FontStyle.italic,
@@ -62,7 +62,7 @@ class BienvenidaPage extends StatelessWidget {
                         height: 10,
                       ),
                       Text(
-                        '    A continuación, se necesita que des algunas autorizaciones para brindar todas las funciones de vitalfon. ',
+                        '    A continuación vitalfon necesita autorización para acceder a varias opciones del teléfono cuando esté en uso el app. Estos permisos son indispensables para que vitalfon facilite el uso del teléfono.		',
                         textAlign: TextAlign.justify,
                         style: TextStyle(
                             fontStyle: FontStyle.italic,

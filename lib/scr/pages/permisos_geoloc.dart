@@ -34,7 +34,7 @@ class _GeoPermisosState extends State<GeoPermisos> {
                             height: 10,
                           ),
                           Text(
-                            ' Para enviar tu LOCALIZACION  en caso de emergencia, necesitamos  nos autorices a acceder a ella. Solamente será usada al momento de tocar el botón de emergencia y por tanto vitalfon está en pantalla. ',
+                            ' Para poder enviar la ubicación del usuario, en caso de emergencia, vitalfon necesita acceso a su localización. Vitalfon solo la usará al tocar el botón de emergencia.',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontStyle: FontStyle.italic,

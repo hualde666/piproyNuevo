@@ -37,7 +37,7 @@ class _LLamadasPermisosState extends State<LLamadasPermisos> {
                             height: 20,
                           ),
                           Text(
-                            ' Para facilitar tus llamadas, vamos a requerir que nos autorices a realizar llamadas. vitalfon solo realizará las llamadas que tu solicites.',
+                            ' Para facilitar las llamadas directas , vitalfon necesita que autorices  a realizar las llamadas que solicite el usuario.		',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontStyle: FontStyle.italic,

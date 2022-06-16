@@ -124,5 +124,4 @@ mandarSMS(List<ContactoDatos> listaE) async {
     telephony.sendSms(to: _phone, message: mensaje + pos2);
     //await _androidChannel.mandarSms(_phone, mensaje + pos2);
   }
-  // TODO: llamar a numero de emergencia
 }

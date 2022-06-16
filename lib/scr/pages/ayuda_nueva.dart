@@ -2,25 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'package:piproy/scr/models/api_tipos.dart';
-import 'package:piproy/scr/pages/api_grupos.dart';
 import 'package:piproy/scr/pages/ayuda.dart';
-import 'package:piproy/scr/pages/conta_grupos.dart';
-import 'package:piproy/scr/pages/contacts_por_grupo.dart';
-import 'package:piproy/scr/pages/desbloqueo.dart';
-import 'package:piproy/scr/pages/mensaje_emergencia.dart';
-
-import 'package:piproy/scr/pages/opciones_page.dart';
-import 'package:piproy/scr/pages/paletta_colores.dart';
-
-import 'package:piproy/scr/pages/select_ayuda.dart';
 import 'package:piproy/scr/providers/aplicaciones_provider.dart';
 
 import 'package:piproy/scr/widgets/header_app.dart';
 import 'package:provider/provider.dart';
 
-import '../ayuda_widget/ayuda_configurar.dart';
 import '../providers/usuario_pref.dart';
 
 class AyudaNuevaPage extends StatelessWidget {

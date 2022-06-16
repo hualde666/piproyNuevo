@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:piproy/scr/ayuda_widget/ayuda_encabezado.dart';
 
 import '../widgets/parrafos_ayuda.dart';
 
