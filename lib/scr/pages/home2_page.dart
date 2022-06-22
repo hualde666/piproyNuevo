@@ -10,7 +10,7 @@ import 'package:piproy/scr/providers/aplicaciones_provider.dart';
 import 'package:piproy/scr/providers/contactos_provider.dart';
 
 import 'package:piproy/scr/providers/db_provider.dart';
-
+import 'package:piproy/scr/providers/estado_celular.dart';
 import 'package:piproy/scr/providers/usuario_pref.dart';
 
 import 'package:piproy/scr/widgets/boton_rojo.dart';
@@ -340,7 +340,8 @@ class BotonesEncabezado extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-
+    final pref = Provider.of<Preferencias>(context);
+    final celProvider = Provider.of<EstadoProvider>(context);
     //double height = MediaQuery.of(context).size.height;
     // double anchoConfig = 50;
     // double iconConfig = 30;
@@ -383,11 +384,68 @@ class BotonesEncabezado extends StatelessWidget {
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Icon(Icons.wifi, color: Colors.grey),
-                          Icon(Icons.gps_fixed, color: Colors.grey),
-                          Icon(Icons.battery_alert, color: Colors.grey),
-                          Icon(Icons.signal_cellular_alt_rounded,
-                              color: Colors.grey),
+                          Icon(
+                              celProvider.conexionWifi
+                                  ? Icons.wifi
+                                  : Icons.wifi_off,
+                              color: celProvider.conexionWifi
+                                  ? pref.paleta != '1'
+                                      ? Colors.green[900]
+                                      : Color.fromARGB(255, 39, 138, 46)
+                                  : pref.paleta != '1'
+                                      ? Colors.red[900]
+                                      : Color.fromARGB(255, 239, 67, 67)),
+                          Icon(
+                              celProvider.conexionGps
+                                  ? Icons.gps_fixed
+                                  : Icons.gps_off,
+                              color: celProvider.conexionGps
+                                  ? pref.paleta != '1'
+                                      ? Colors.green[900]
+                                      : Color.fromARGB(255, 39, 138, 46)
+                                  : pref.paleta != '1'
+                                      ? Colors.red[900]
+                                      : Color.fromARGB(255, 239, 67, 67)),
+
+                          ///**** ESTADO BATERIA */
+
+                          Container(
+                            // color: Colors.amberAccent,
+                            child: Stack(children: [
+                              Center(
+                                child: Icon(Icons.battery_full,
+                                    color: celProvider.bateriaColor),
+                              ),
+                              Positioned(
+                                left: celProvider.nivelBateria == 100 ? 14 : 13,
+                                top: celProvider.nivelBateria == 100 ? 6 : 8,
+                                child: RotatedBox(
+                                  quarterTurns: -1,
+                                  child: Text(
+                                    celProvider.nivelBateria.toString() + '%',
+                                    style: TextStyle(
+                                        fontSize:
+                                            celProvider.nivelBateria == 100
+                                                ? 11
+                                                : 13,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                            ]),
+                          ),
+                          Icon(
+                              celProvider.conexionDatos
+                                  ? Icons.signal_cellular_alt_rounded
+                                  : Icons.signal_cellular_null,
+                              color: celProvider.conexionDatos
+                                  ? pref.paleta != '1'
+                                      ? Colors.green[900]
+                                      : Color.fromARGB(255, 39, 138, 46)
+                                  : pref.paleta != '1'
+                                      ? Colors.red[900]
+                                      : Color.fromARGB(255, 239, 67, 67)),
                         ]),
                   ),
                   SizedBox(

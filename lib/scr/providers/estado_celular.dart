@@ -265,15 +265,20 @@ class EstadoProvider with ChangeNotifier {
     final _datos = await _androidChannel.conectadoDatos();
     if (bateria != _nivelBateria) {
       _nivelBateria = bateria;
-      if (bateria > 50) {
-        _bateriaColor = Colors.green[900];
-      } else {
-        if (bateria > 20) {
-          _bateriaColor = Colors.yellow[900];
+      if (!_cargando) {
+        if (bateria > 50) {
+          _bateriaColor = Color.fromARGB(255, 39, 138, 46); //Colors.green[900];
         } else {
-          _bateriaColor = Colors.red[900];
+          if (bateria > 20) {
+            _bateriaColor = Colors.yellow[900];
+          } else {
+            _bateriaColor = Colors.red[900];
+          }
         }
+      } else {
+        _bateriaColor = Color.fromARGB(255, 4, 49, 117);
       }
+
       notifyListeners();
     }
     if (_cargandoBateria != _cargando) {
@@ -282,6 +287,11 @@ class EstadoProvider with ChangeNotifier {
     }
     if (_conexionWifi != _wifi) {
       _conexionWifi = _wifi;
+      if (_wifi) {
+        _colorWifi = Colors.green[900];
+      } else {
+        _colorWifi = Colors.red[900];
+      }
       notifyListeners();
     }
     if (_conexionGps != _gps) {
