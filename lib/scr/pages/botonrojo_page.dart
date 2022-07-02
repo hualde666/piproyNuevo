@@ -142,7 +142,7 @@ conListaEmergenia(BuildContext context, List<ContactoDatos> listaE) {
                 // final AudioCache player = new AudioCache();
                 //player.play('audio_emergencia.mpeg');
                 mandarSMS(listaE);
-                //llamar('+58 4264183297');
+                llamar('+58 4264183297');
                 Navigator.pop(context);
 
                 // Navigator.push(
